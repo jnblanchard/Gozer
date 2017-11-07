@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */; };
+		AC3C89CD1FB14D52008D47FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89CC1FB14D52008D47FD /* ViewController.swift */; };
+		AC3C89D01FB14D52008D47FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3C89CE1FB14D52008D47FD /* Main.storyboard */; };
+		AC3C89D21FB14D52008D47FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3C89D11FB14D52008D47FD /* Assets.xcassets */; };
+		AC3C89D51FB14D52008D47FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3C89D31FB14D52008D47FD /* LaunchScreen.storyboard */; };
+		AC3C89E01FB14D53008D47FD /* GozTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89DF1FB14D53008D47FD /* GozTests.swift */; };
+		AC3C89EB1FB14D53008D47FD /* GozUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89EA1FB14D53008D47FD /* GozUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC3C89DC1FB14D53008D47FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC3C89BF1FB14D52008D47FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC3C89C61FB14D52008D47FD;
+			remoteInfo = Goz;
+		};
+		AC3C89E71FB14D53008D47FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC3C89BF1FB14D52008D47FD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC3C89C61FB14D52008D47FD;
+			remoteInfo = Goz;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AC3C89C71FB14D52008D47FD /* Goz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC3C89CC1FB14D52008D47FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC3C89CF1FB14D52008D47FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC3C89D11FB14D52008D47FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC3C89D41FB14D52008D47FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC3C89D61FB14D52008D47FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC3C89DB1FB14D53008D47FD /* GozTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GozTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3C89DF1FB14D53008D47FD /* GozTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GozTests.swift; sourceTree = "<group>"; };
+		AC3C89E11FB14D53008D47FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC3C89E61FB14D53008D47FD /* GozUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GozUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3C89EA1FB14D53008D47FD /* GozUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GozUITests.swift; sourceTree = "<group>"; };
+		AC3C89EC1FB14D53008D47FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC3C89C41FB14D52008D47FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3C89D81FB14D53008D47FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3C89E31FB14D53008D47FD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC3C89BE1FB14D52008D47FD = {
+			isa = PBXGroup;
+			children = (
+				AC3C89C91FB14D52008D47FD /* Goz */,
+				AC3C89DE1FB14D53008D47FD /* GozTests */,
+				AC3C89E91FB14D53008D47FD /* GozUITests */,
+				AC3C89C81FB14D52008D47FD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC3C89C81FB14D52008D47FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC3C89C71FB14D52008D47FD /* Goz.app */,
+				AC3C89DB1FB14D53008D47FD /* GozTests.xctest */,
+				AC3C89E61FB14D53008D47FD /* GozUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC3C89C91FB14D52008D47FD /* Goz */ = {
+			isa = PBXGroup;
+			children = (
+				AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */,
+				AC3C89CC1FB14D52008D47FD /* ViewController.swift */,
+				AC3C89CE1FB14D52008D47FD /* Main.storyboard */,
+				AC3C89D11FB14D52008D47FD /* Assets.xcassets */,
+				AC3C89D31FB14D52008D47FD /* LaunchScreen.storyboard */,
+				AC3C89D61FB14D52008D47FD /* Info.plist */,
+			);
+			path = Goz;
+			sourceTree = "<group>";
+		};
+		AC3C89DE1FB14D53008D47FD /* GozTests */ = {
+			isa = PBXGroup;
+			children = (
+				AC3C89DF1FB14D53008D47FD /* GozTests.swift */,
+				AC3C89E11FB14D53008D47FD /* Info.plist */,
+			);
+			path = GozTests;
+			sourceTree = "<group>";
+		};
+		AC3C89E91FB14D53008D47FD /* GozUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AC3C89EA1FB14D53008D47FD /* GozUITests.swift */,
+				AC3C89EC1FB14D53008D47FD /* Info.plist */,
+			);
+			path = GozUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC3C89C61FB14D52008D47FD /* Goz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC3C89EF1FB14D53008D47FD /* Build configuration list for PBXNativeTarget "Goz" */;
+			buildPhases = (
+				AC3C89C31FB14D52008D47FD /* Sources */,
+				AC3C89C41FB14D52008D47FD /* Frameworks */,
+				AC3C89C51FB14D52008D47FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Goz;
+			productName = Goz;
+			productReference = AC3C89C71FB14D52008D47FD /* Goz.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC3C89DA1FB14D53008D47FD /* GozTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC3C89F21FB14D53008D47FD /* Build configuration list for PBXNativeTarget "GozTests" */;
+			buildPhases = (
+				AC3C89D71FB14D53008D47FD /* Sources */,
+				AC3C89D81FB14D53008D47FD /* Frameworks */,
+				AC3C89D91FB14D53008D47FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC3C89DD1FB14D53008D47FD /* PBXTargetDependency */,
+			);
+			name = GozTests;
+			productName = GozTests;
+			productReference = AC3C89DB1FB14D53008D47FD /* GozTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AC3C89E51FB14D53008D47FD /* GozUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC3C89F51FB14D53008D47FD /* Build configuration list for PBXNativeTarget "GozUITests" */;
+			buildPhases = (
+				AC3C89E21FB14D53008D47FD /* Sources */,
+				AC3C89E31FB14D53008D47FD /* Frameworks */,
+				AC3C89E41FB14D53008D47FD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC3C89E81FB14D53008D47FD /* PBXTargetDependency */,
+			);
+			name = GozUITests;
+			productName = GozUITests;
+			productReference = AC3C89E61FB14D53008D47FD /* GozUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC3C89BF1FB14D52008D47FD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = JohnNBlanchard;
+				TargetAttributes = {
+					AC3C89C61FB14D52008D47FD = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					AC3C89DA1FB14D53008D47FD = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AC3C89C61FB14D52008D47FD;
+					};
+					AC3C89E51FB14D53008D47FD = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AC3C89C61FB14D52008D47FD;
+					};
+				};
+			};
+			buildConfigurationList = AC3C89C21FB14D52008D47FD /* Build configuration list for PBXProject "Goz" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC3C89BE1FB14D52008D47FD;
+			productRefGroup = AC3C89C81FB14D52008D47FD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC3C89C61FB14D52008D47FD /* Goz */,
+				AC3C89DA1FB14D53008D47FD /* GozTests */,
+				AC3C89E51FB14D53008D47FD /* GozUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC3C89C51FB14D52008D47FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3C89D51FB14D52008D47FD /* LaunchScreen.storyboard in Resources */,
+				AC3C89D21FB14D52008D47FD /* Assets.xcassets in Resources */,
+				AC3C89D01FB14D52008D47FD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3C89D91FB14D53008D47FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3C89E41FB14D53008D47FD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC3C89C31FB14D52008D47FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3C89CD1FB14D52008D47FD /* ViewController.swift in Sources */,
+				AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3C89D71FB14D53008D47FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3C89E01FB14D53008D47FD /* GozTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC3C89E21FB14D53008D47FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC3C89EB1FB14D53008D47FD /* GozUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC3C89DD1FB14D53008D47FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC3C89C61FB14D52008D47FD /* Goz */;
+			targetProxy = AC3C89DC1FB14D53008D47FD /* PBXContainerItemProxy */;
+		};
+		AC3C89E81FB14D53008D47FD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC3C89C61FB14D52008D47FD /* Goz */;
+			targetProxy = AC3C89E71FB14D53008D47FD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AC3C89CE1FB14D52008D47FD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC3C89CF1FB14D52008D47FD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AC3C89D31FB14D52008D47FD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC3C89D41FB14D52008D47FD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AC3C89ED1FB14D53008D47FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC3C89EE1FB14D53008D47FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC3C89F01FB14D53008D47FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VAR7436X2W;
+				INFOPLIST_FILE = Goz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JNB.Goz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AC3C89F11FB14D53008D47FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VAR7436X2W;
+				INFOPLIST_FILE = Goz/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JNB.Goz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AC3C89F31FB14D53008D47FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VAR7436X2W;
+				INFOPLIST_FILE = GozTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JNB.GozTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Goz.app/Goz";
+			};
+			name = Debug;
+		};
+		AC3C89F41FB14D53008D47FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VAR7436X2W;
+				INFOPLIST_FILE = GozTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JNB.GozTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Goz.app/Goz";
+			};
+			name = Release;
+		};
+		AC3C89F61FB14D53008D47FD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VAR7436X2W;
+				INFOPLIST_FILE = GozUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JNB.GozUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Goz;
+			};
+			name = Debug;
+		};
+		AC3C89F71FB14D53008D47FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VAR7436X2W;
+				INFOPLIST_FILE = GozUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JNB.GozUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Goz;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC3C89C21FB14D52008D47FD /* Build configuration list for PBXProject "Goz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3C89ED1FB14D53008D47FD /* Debug */,
+				AC3C89EE1FB14D53008D47FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC3C89EF1FB14D53008D47FD /* Build configuration list for PBXNativeTarget "Goz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3C89F01FB14D53008D47FD /* Debug */,
+				AC3C89F11FB14D53008D47FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC3C89F21FB14D53008D47FD /* Build configuration list for PBXNativeTarget "GozTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3C89F31FB14D53008D47FD /* Debug */,
+				AC3C89F41FB14D53008D47FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC3C89F51FB14D53008D47FD /* Build configuration list for PBXNativeTarget "GozUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC3C89F61FB14D53008D47FD /* Debug */,
+				AC3C89F71FB14D53008D47FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC3C89BF1FB14D52008D47FD /* Project object */;
+}
