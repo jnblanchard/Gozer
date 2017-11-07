@@ -7,19 +7,60 @@
 //
 
 import UIKit
+import AVFoundation
+import Accelerate
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+
+  let model = Goz()
+
+  let videoBufferQueue = DispatchQueue(label: "Video Output",
+                                       autoreleaseFrequency: .workItem)
+  let deviceSessionQueue = DispatchQueue(label: "Device Actions")
+
+  let captureSession = AVCaptureSession()
+  let output = AVCaptureVideoDataOutput()
+
+  var flash: AVCaptureDevice.FlashMode = .off
+  var zoomFactor: CGFloat = 1.0
+
+  var backDevice: AVCaptureDevice?
+  var backInput: AVCaptureInput?
+
+  @IBOutlet var predictionLabel: UILabel!
+  @IBOutlet var predictionImageView: UIImageView!
+  @IBOutlet var dogLogButton: UIButton!
+
+  var previewLayer: AVCaptureVideoPreviewLayer?
+
+  override var prefersStatusBarHidden: Bool { return true }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    configure()
   }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    startSession()
   }
 
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    stopSession()
+  }
 
+  func captureOutput(_ captureOutput: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    debugPrint("dropped video output")
+  }
+
+  func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    poorPredict(using: sampleBuffer)
+  }
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+  }
+
+  override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
 }
-
