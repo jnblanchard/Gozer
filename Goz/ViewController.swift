@@ -74,6 +74,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
       try device.lockForConfiguration()
       let torchSwitch = device.torchMode == .on
       device.torchMode = torchSwitch ? .off : .on
+      if device.torchMode == .on {
+        try device.setTorchModeOn(level: 0.7)
+      }
       sender.setTitle(torchSwitch ? "TorchON" : "TorchOFF", for: .normal)
     } catch {
       debugPrint(error)

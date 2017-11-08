@@ -68,7 +68,6 @@ extension ViewController {
       device.activeVideoMinFrameDuration = bestFrameRateRange?.minFrameDuration ?? kCMTimeZero
       device.activeVideoMaxFrameDuration = bestFrameRateRange?.maxFrameDuration ?? kCMTimeZero
 
-      try device.setTorchModeOn(level: 0.8)
       device.torchMode = .off
 
       if device.isFocusModeSupported(.continuousAutoFocus) {
