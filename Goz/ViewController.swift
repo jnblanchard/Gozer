@@ -19,9 +19,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }) as? InsightfulViewController
   }
 
-  let videoBufferQueue = DispatchQueue(label: "Video Output",
+  let videoBufferQueue = DispatchQueue(label: "Output",
                                        autoreleaseFrequency: .workItem)
-  let deviceSessionQueue = DispatchQueue(label: "Device Actions")
 
   let captureSession = AVCaptureSession()
   let output = AVCaptureVideoDataOutput()
@@ -29,6 +28,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   var backDevice: AVCaptureDevice?
   var backInput: AVCaptureInput?
 
+  @IBOutlet var predictionIndicator: UIActivityIndicatorView!
   @IBOutlet var cameraParentView: UIView!
   @IBOutlet var predictionLabel: UILabel!
   @IBOutlet var predictionImageView: UIImageView!
@@ -42,8 +42,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    bottomController?.delegate = self
     configure()
+    bottomController?.delegate = self
+    cameraParentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusAndExposeTap)))
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -57,8 +58,26 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   }
 
   @IBAction func sparkPredictionTapped(_ sender: Any) {
+    predictionIndicator.startAnimating()
     predictions.removeAll()
     predictionLabel.tag = 14
+  }
+
+  @objc func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
+    guard let devicePoint = previewLayer?.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view)) else { return }
+    focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
+  }
+
+  @IBAction func torchButtonTapped(_ sender: UIButton) {
+    guard let device = backDevice else { return }
+    do {
+      try device.lockForConfiguration()
+      let torchSwitch = device.torchMode == .on
+      device.torchMode = torchSwitch ? .off : .on
+      sender.setTitle(torchSwitch ? "TorchON" : "TorchOFF", for: .normal)
+    } catch {
+      debugPrint(error)
+    }
   }
 
   func captureOutput(_ captureOutput: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -72,47 +91,4 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {}
 
   override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
-}
-
-extension ViewController: Insights {
-  func consensus(on place: Int) -> String? {
-    guard place < predictions.count else {
-      debugPrint("Attempting to create consensus on out of bounds placement.")
-      return nil
-    }
-    let topMap = predictions.map { (entry) -> String? in
-      return entry[place].0
-    }
-    var count: [String: Int] = [:]
-    for item in topMap {
-      guard let temp = item else { continue }
-      count[temp] = (count[temp] ?? 0) + 1
-    }
-    guard let temp = count.first(where: { (entry) -> Bool in
-      return entry.value == count.values.max()
-    }) else { return nil }
-    return temp.key
-  }
-
-  func curatePrediction() {
-    let first = "1. \(consensus(on: 0) ?? "")"
-    let second = "2. \(consensus(on: 1) ?? "")"
-    let third = "3. \(consensus(on: 2) ?? "")"
-    let alert = UIAlertController(title: "Prediction Curated", message: "\(first)\n\(second)\n\(third)", preferredStyle: .alert)
-    let okay = UIAlertAction(title: "okay", style: .default, handler: nil)
-    alert.addAction(okay)
-    present(alert, animated: true, completion: nil)
-    predictions.removeAll()
-  }
-
-
-  func topPredictionsFromFrame(entry: [(String, Double)]) {
-    guard predictionLabel.tag == 14 else { return }
-    guard predictions.count < 18 else {
-      predictionLabel.tag = 2
-      curatePrediction()
-      return
-    }
-    predictions.append(entry)
-  }
 }

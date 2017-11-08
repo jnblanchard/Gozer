@@ -67,6 +67,10 @@ extension ViewController {
       device.activeFormat = bestFormat!
       device.activeVideoMinFrameDuration = bestFrameRateRange?.minFrameDuration ?? kCMTimeZero
       device.activeVideoMaxFrameDuration = bestFrameRateRange?.maxFrameDuration ?? kCMTimeZero
+
+      try device.setTorchModeOn(level: 0.8)
+      device.torchMode = .off
+
       if device.isFocusModeSupported(.continuousAutoFocus) {
         device.focusMode = .continuousAutoFocus
       } else if device.isFocusModeSupported(.autoFocus) {
@@ -91,6 +95,29 @@ extension ViewController {
       backInput = try AVCaptureDeviceInput(device: backDevice!)
     } catch {
       debugPrint("Failed to create device inputs because \(error)")
+    }
+  }
+
+  public func focus(with focusMode: AVCaptureDevice.FocusMode, exposureMode: AVCaptureDevice.ExposureMode, at devicePoint: CGPoint, monitorSubjectAreaChange: Bool) {
+
+    guard let device = backDevice else { return }
+    do {
+      try device.lockForConfiguration()
+
+      if device.isFocusPointOfInterestSupported && device.isFocusModeSupported(focusMode) {
+        device.focusPointOfInterest = devicePoint
+        device.focusMode = focusMode
+      }
+
+      if device.isExposurePointOfInterestSupported && device.isExposureModeSupported(exposureMode) {
+        device.exposurePointOfInterest = devicePoint
+        device.exposureMode = exposureMode
+      }
+
+      device.isSubjectAreaChangeMonitoringEnabled = monitorSubjectAreaChange
+      device.unlockForConfiguration()
+    } catch {
+      debugPrint(error)
     }
   }
 }

@@ -60,12 +60,19 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-dg-ezY">
                                                         <rect key="frame" x="0.0" y="16" width="125" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
-                                                        <state key="normal" title="TorchOn"/>
+                                                        <state key="normal" title="TorchON">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="torchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gsb-qj-Uqn"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7f-oe-umz">
                                                         <rect key="frame" x="125" y="16" width="125" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
-                                                        <state key="normal" title="Spark"/>
+                                                        <state key="normal" title="Spark">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="sparkPredictionTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WRE-Ct-EyT"/>
                                                         </connections>
@@ -73,12 +80,14 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04Q-jv-pa2">
                                                         <rect key="frame" x="250" y="16" width="125" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
-                                                        <state key="normal" title="History"/>
+                                                        <state key="normal" title="History">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="pcH-9T-PGD" secondAttribute="bottom" id="JOP-Fr-sGH"/>
                                             <constraint firstAttribute="height" constant="65" id="fOd-Pl-tSf"/>
@@ -87,11 +96,24 @@
                                             <constraint firstItem="pcH-9T-PGD" firstAttribute="leading" secondItem="DcR-kq-adm" secondAttribute="leading" id="vfO-5x-cys"/>
                                         </constraints>
                                     </view>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5UP-lG-AKs">
+                                        <rect key="frame" x="169" y="380" width="37" height="37"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="DcR-kq-adm" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" id="1kN-Jc-0EL"/>
+                                    <constraint firstItem="5UP-lG-AKs" firstAttribute="centerX" secondItem="taQ-nn-FaB" secondAttribute="centerX" id="ChI-k3-Ls2"/>
                                     <constraint firstAttribute="trailing" secondItem="DcR-kq-adm" secondAttribute="trailing" id="EYT-Rv-GUb"/>
+                                    <constraint firstItem="DcR-kq-adm" firstAttribute="top" secondItem="5UP-lG-AKs" secondAttribute="bottom" constant="5" id="U37-2h-Hb5"/>
                                     <constraint firstAttribute="bottom" secondItem="g6h-8m-JSe" secondAttribute="bottom" id="U4f-lB-jQF"/>
                                     <constraint firstItem="AEh-1y-8s7" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" constant="15" id="Ws8-lY-qQy"/>
                                     <constraint firstItem="g6h-8m-JSe" firstAttribute="top" secondItem="DcR-kq-adm" secondAttribute="bottom" id="e9Q-6j-tU3"/>
@@ -116,6 +138,7 @@
                     <connections>
                         <outlet property="cameraParentView" destination="taQ-nn-FaB" id="wOp-Lc-3QO"/>
                         <outlet property="predictionImageView" destination="AEh-1y-8s7" id="rig-KX-YaY"/>
+                        <outlet property="predictionIndicator" destination="5UP-lG-AKs" id="HJo-vJ-geb"/>
                         <outlet property="predictionLabel" destination="tWw-l0-vaa" id="e3K-eH-xvh"/>
                     </connections>
                 </viewController>
