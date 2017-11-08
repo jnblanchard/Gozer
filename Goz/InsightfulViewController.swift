@@ -8,9 +8,13 @@
 
 import UIKit
 
+protocol Insights { func topPredictionsFromFrame(entry: [(String, Double)]) }
+
 class InsightfulViewController: UIViewController {
 
   @IBOutlet var labels: [UILabel]!
+
+  var delegate: Insights?
 
   var predictions: [String : Double]? {
     didSet {
@@ -27,6 +31,7 @@ class InsightfulViewController: UIViewController {
         let prediction = topTups[label.tag]
         label.text = "\(prediction.1.rounded(toPlaces: 3)) \n \(prediction.0)"
       }
+      delegate?.topPredictionsFromFrame(entry: topTups)
     }
   }
 

@@ -10,6 +10,7 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="Menlo.ttc">
+            <string>Menlo-Bold</string>
             <string>Menlo-Regular</string>
         </array>
         <array key="TimesNewRomanBold.ttf">
@@ -50,11 +51,50 @@
                                             <segue destination="acH-ab-QOc" kind="embed" id="ZYI-XS-Avg"/>
                                         </connections>
                                     </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcR-kq-adm">
+                                        <rect key="frame" x="0.0" y="422" width="375" height="65"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pcH-9T-PGD">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-dg-ezY">
+                                                        <rect key="frame" x="0.0" y="16" width="125" height="33"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
+                                                        <state key="normal" title="TorchOn"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7f-oe-umz">
+                                                        <rect key="frame" x="125" y="16" width="125" height="33"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
+                                                        <state key="normal" title="Spark"/>
+                                                        <connections>
+                                                            <action selector="sparkPredictionTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WRE-Ct-EyT"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04Q-jv-pa2">
+                                                        <rect key="frame" x="250" y="16" width="125" height="33"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
+                                                        <state key="normal" title="History"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="pcH-9T-PGD" secondAttribute="bottom" id="JOP-Fr-sGH"/>
+                                            <constraint firstAttribute="height" constant="65" id="fOd-Pl-tSf"/>
+                                            <constraint firstAttribute="trailing" secondItem="pcH-9T-PGD" secondAttribute="trailing" id="qU1-k2-LMh"/>
+                                            <constraint firstItem="pcH-9T-PGD" firstAttribute="top" secondItem="DcR-kq-adm" secondAttribute="top" id="uMR-vr-siU"/>
+                                            <constraint firstItem="pcH-9T-PGD" firstAttribute="leading" secondItem="DcR-kq-adm" secondAttribute="leading" id="vfO-5x-cys"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="DcR-kq-adm" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" id="1kN-Jc-0EL"/>
+                                    <constraint firstAttribute="trailing" secondItem="DcR-kq-adm" secondAttribute="trailing" id="EYT-Rv-GUb"/>
                                     <constraint firstAttribute="bottom" secondItem="g6h-8m-JSe" secondAttribute="bottom" id="U4f-lB-jQF"/>
                                     <constraint firstItem="AEh-1y-8s7" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" constant="15" id="Ws8-lY-qQy"/>
+                                    <constraint firstItem="g6h-8m-JSe" firstAttribute="top" secondItem="DcR-kq-adm" secondAttribute="bottom" id="e9Q-6j-tU3"/>
                                     <constraint firstAttribute="trailing" secondItem="tWw-l0-vaa" secondAttribute="trailing" constant="15" id="k99-Fm-A3i"/>
                                     <constraint firstItem="AEh-1y-8s7" firstAttribute="top" secondItem="taQ-nn-FaB" secondAttribute="top" constant="30" id="kej-K1-6P1"/>
                                     <constraint firstItem="g6h-8m-JSe" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" id="lYE-fA-eS0"/>

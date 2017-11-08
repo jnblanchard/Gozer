@@ -35,9 +35,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   var previewLayer: AVCaptureVideoPreviewLayer?
 
   override var prefersStatusBarHidden: Bool { return true }
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
+  override var shouldAutorotate: Bool { return true }
+
+  var predictions: [[(String, Double)]] = [[]]
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    bottomController?.delegate = self
     configure()
   }
 
@@ -51,6 +56,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     stopSession()
   }
 
+  @IBAction func sparkPredictionTapped(_ sender: Any) {
+    predictions.removeAll()
+    predictionLabel.tag = 14
+  }
+
   func captureOutput(_ captureOutput: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
     //debugPrint("dropped video output")
   }
@@ -62,4 +72,47 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {}
 
   override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
+}
+
+extension ViewController: Insights {
+  func consensus(on place: Int) -> String? {
+    guard place < predictions.count else {
+      debugPrint("Attempting to create consensus on out of bounds placement.")
+      return nil
+    }
+    let topMap = predictions.map { (entry) -> String? in
+      return entry[place].0
+    }
+    var count: [String: Int] = [:]
+    for item in topMap {
+      guard let temp = item else { continue }
+      count[temp] = (count[temp] ?? 0) + 1
+    }
+    guard let temp = count.first(where: { (entry) -> Bool in
+      return entry.value == count.values.max()
+    }) else { return nil }
+    return temp.key
+  }
+
+  func curatePrediction() {
+    let first = "1. \(consensus(on: 0) ?? "")"
+    let second = "2. \(consensus(on: 1) ?? "")"
+    let third = "3. \(consensus(on: 2) ?? "")"
+    let alert = UIAlertController(title: "Prediction Curated", message: "\(first)\n\(second)\n\(third)", preferredStyle: .alert)
+    let okay = UIAlertAction(title: "okay", style: .default, handler: nil)
+    alert.addAction(okay)
+    present(alert, animated: true, completion: nil)
+    predictions.removeAll()
+  }
+
+
+  func topPredictionsFromFrame(entry: [(String, Double)]) {
+    guard predictionLabel.tag == 14 else { return }
+    guard predictions.count < 18 else {
+      predictionLabel.tag = 2
+      curatePrediction()
+      return
+    }
+    predictions.append(entry)
+  }
 }
