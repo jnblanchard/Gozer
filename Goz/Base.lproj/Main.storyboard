@@ -58,7 +58,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-dg-ezY">
-                                                        <rect key="frame" x="0.0" y="16" width="125" height="33"/>
+                                                        <rect key="frame" x="0.0" y="16" width="187.5" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
                                                         <state key="normal" title="TorchON">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,7 +68,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7f-oe-umz">
-                                                        <rect key="frame" x="125" y="16" width="125" height="33"/>
+                                                        <rect key="frame" x="187.5" y="16" width="187.5" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
                                                         <state key="normal" title="Spark">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,13 +76,6 @@
                                                         <connections>
                                                             <action selector="sparkPredictionTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WRE-Ct-EyT"/>
                                                         </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04Q-jv-pa2">
-                                                        <rect key="frame" x="250" y="16" width="125" height="33"/>
-                                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
-                                                        <state key="normal" title="History">
-                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -191,6 +184,7 @@
                             <constraint firstAttribute="bottom" secondItem="bhI-S7-xYh" secondAttribute="bottom" id="xAu-vE-rmG"/>
                             <constraint firstItem="bhI-S7-xYh" firstAttribute="top" secondItem="yBQ-lY-9pg" secondAttribute="top" id="zUn-4V-omK"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="VuD-u9-dmy"/>
                     </view>
                     <connections>
                         <outletCollection property="labels" destination="tsK-cH-oPU" collectionClass="NSMutableArray" id="PzN-bs-keK"/>
