@@ -102,29 +102,38 @@ extension ViewController {
 }
 
 extension ViewController: Insights {
-  func consensus(on place: Int) -> String? {
+  struct prediction { var name = ""; var confidence = 0.0 }
+
+  func consensus(on place: Int) -> (String, Double)? {
     guard place < predictions.count else {
       debugPrint("Attempting to create consensus on out of bounds placement.")
       return nil
     }
-    let topMap = predictions.map { (entry) -> String? in
-      return entry[place].0
+    let predictionMap = predictions.map { (entry) -> prediction in
+      let data = entry[place]
+      return prediction(name: data.0, confidence: data.1)
     }
     var count: [String: Int] = [:]
-    for item in topMap {
-      guard let temp = item else { continue }
-      count[temp] = (count[temp] ?? 0) + 1
+    for data in predictionMap {
+      count[data.name] = (count[data.name] ?? 0) + 1
     }
-    guard let temp = count.first(where: { (entry) -> Bool in
+    guard let consensusEntry = count.first(where: { (entry) -> Bool in
       return entry.value == count.values.max()
     }) else { return nil }
-    return temp.key
+    var bestValue = 0.0
+    for aPrediction in predictionMap {
+      guard aPrediction.name == consensusEntry.key else { continue }
+      guard aPrediction.confidence > bestValue else { continue }
+      bestValue = aPrediction.confidence
+    }
+    return (consensusEntry.key, bestValue)
   }
 
   func curatePrediction() {
-    let first = "1. \(consensus(on: 0) ?? "")"
-    let second = "2. \(consensus(on: 1) ?? "")"
-    let third = "3. \(consensus(on: 2) ?? "")"
+    guard let firstPlace = consensus(on: 0), let secondPlace = consensus(on: 1), let thirdPlace = consensus(on: 2) else { return }
+    let first = "1. \(firstPlace.0), \(firstPlace.1.rounded(toPlaces: 4)*100)%"
+    let second = "2. \(secondPlace.0), \(secondPlace.1.rounded(toPlaces: 4)*100)%"
+    let third = "1. \(thirdPlace.0), \(thirdPlace.1.rounded(toPlaces: 4)*100)%"
     let alert = UIAlertController(title: "Prediction Curated", message: "\(first)\n\(second)\n\(third)", preferredStyle: .alert)
     let okay = UIAlertAction(title: "okay", style: .default, handler: nil)
     alert.addAction(okay)
