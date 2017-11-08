@@ -21,16 +21,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   let captureSession = AVCaptureSession()
   let output = AVCaptureVideoDataOutput()
 
-  var flash: AVCaptureDevice.FlashMode = .off
-  var zoomFactor: CGFloat = 1.0
-
   var backDevice: AVCaptureDevice?
   var backInput: AVCaptureInput?
 
+  @IBOutlet var cameraParentView: UIView!
   @IBOutlet var predictionLabel: UILabel!
   @IBOutlet var predictionImageView: UIImageView!
-  @IBOutlet var dogLogButton: UIButton!
-
   var previewLayer: AVCaptureVideoPreviewLayer?
 
   override var prefersStatusBarHidden: Bool { return true }
@@ -51,7 +47,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   }
 
   func captureOutput(_ captureOutput: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    debugPrint("dropped video output")
+    //debugPrint("dropped video output")
   }
 
   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {

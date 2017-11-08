@@ -22,67 +22,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWw-l0-vaa">
-                                <rect key="frame" x="100" y="60" width="175" height="0.0"/>
-                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="23"/>
-                                <color key="textColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AEh-1y-8s7">
-                                <rect key="frame" x="20" y="30" width="60" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taQ-nn-FaB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a prediction" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWw-l0-vaa">
+                                        <rect key="frame" x="138" y="92.5" width="222" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="23"/>
+                                        <color key="textColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AEh-1y-8s7">
+                                        <rect key="frame" x="15" y="30" width="113" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="113" id="9g0-J7-XV9"/>
+                                            <constraint firstAttribute="height" constant="150" id="npK-j1-2p8"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="ent-un-QjU"/>
-                                    <constraint firstAttribute="width" constant="60" id="kxs-aF-tYY"/>
+                                    <constraint firstItem="AEh-1y-8s7" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" constant="15" id="Ws8-lY-qQy"/>
+                                    <constraint firstAttribute="trailing" secondItem="tWw-l0-vaa" secondAttribute="trailing" constant="15" id="k99-Fm-A3i"/>
+                                    <constraint firstItem="AEh-1y-8s7" firstAttribute="top" secondItem="taQ-nn-FaB" secondAttribute="top" constant="30" id="kej-K1-6P1"/>
+                                    <constraint firstItem="tWw-l0-vaa" firstAttribute="centerY" secondItem="AEh-1y-8s7" secondAttribute="centerY" id="mNT-fF-xMl"/>
+                                    <constraint firstItem="tWw-l0-vaa" firstAttribute="leading" secondItem="AEh-1y-8s7" secondAttribute="trailing" constant="10" id="zRe-nA-oLh"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSW-qT-rHV">
-                                <rect key="frame" x="297" y="38" width="58" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="OKG-DV-7qj"/>
-                                </constraints>
-                                <state key="normal" title="Dog Log"/>
-                                <connections>
-                                    <segue destination="RV4-Qw-r7Z" kind="show" id="d6T-NR-bWI"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.40000000000000002" green="1" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vSW-qT-rHV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="0sY-Kw-QDp"/>
-                            <constraint firstItem="tWw-l0-vaa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0zH-Pu-EdL"/>
-                            <constraint firstItem="AEh-1y-8s7" firstAttribute="centerY" secondItem="tWw-l0-vaa" secondAttribute="centerY" id="OmP-Dv-tSa"/>
-                            <constraint firstItem="tWw-l0-vaa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Q1e-Pg-bxo"/>
-                            <constraint firstItem="vSW-qT-rHV" firstAttribute="centerY" secondItem="tWw-l0-vaa" secondAttribute="centerY" id="WXs-N0-QHE"/>
-                            <constraint firstItem="tWw-l0-vaa" firstAttribute="leading" secondItem="AEh-1y-8s7" secondAttribute="trailing" constant="20" id="dGo-yK-xS6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vSW-qT-rHV" secondAttribute="trailing" constant="20" id="m1e-hd-AhA"/>
-                            <constraint firstItem="AEh-1y-8s7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="z96-gV-Rzh"/>
+                            <constraint firstItem="taQ-nn-FaB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="axc-b0-6hh"/>
+                            <constraint firstItem="taQ-nn-FaB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dhs-ni-qhp"/>
+                            <constraint firstItem="taQ-nn-FaB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="o56-rt-yEn"/>
+                            <constraint firstItem="taQ-nn-FaB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="r5Q-Tm-mNN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="dogLogButton" destination="vSW-qT-rHV" id="S3C-sb-WRQ"/>
+                        <outlet property="cameraParentView" destination="taQ-nn-FaB" id="wOp-Lc-3QO"/>
                         <outlet property="predictionImageView" destination="AEh-1y-8s7" id="rig-KX-YaY"/>
                         <outlet property="predictionLabel" destination="tWw-l0-vaa" id="e3K-eH-xvh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23" y="34"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="EUf-6u-GbF">
-            <objects>
-                <viewController id="RV4-Qw-r7Z" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LdO-zu-cAO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="3Hb-nV-0MH"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wYb-Gd-TP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="753" y="34"/>
+            <point key="canvasLocation" x="-23.199999999999999" y="33.733133433283363"/>
         </scene>
     </scenes>
 </document>

@@ -37,18 +37,11 @@ extension ViewController {
     previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
     previewLayer!.frame = view.bounds
     view.layer.addSublayer(previewLayer!)
-    view.bringSubview(toFront: predictionLabel)
-    view.bringSubview(toFront: predictionImageView)
-    deviceSessionQueue.async {
-      self.captureSession.startRunning()
-    }
+    view.bringSubview(toFront: cameraParentView)
+    DispatchQueue.main.async { self.captureSession.startRunning() }
   }
 
-  func stopSession() {
-    deviceSessionQueue.async {
-      self.captureSession.stopRunning()
-    }
-  }
+  func stopSession() { DispatchQueue.main.async { self.captureSession.stopRunning() } }
 
   func configure() {
     backDevice = AVCaptureDevice.DiscoverySession.init(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back).devices.first
