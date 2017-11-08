@@ -12,7 +12,7 @@ import Accelerate
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
-  let model = Goz()
+  let model = AdultGoz()
 
   let videoBufferQueue = DispatchQueue(label: "Video Output",
                                        autoreleaseFrequency: .workItem)

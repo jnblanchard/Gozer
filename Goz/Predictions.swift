@@ -13,6 +13,7 @@ import Accelerate
 
 extension ViewController {
   func poorPredict(using sample: CMSampleBuffer) {
+    //image size 400x300
     guard let imageBuffer = CMSampleBufferGetImageBuffer(sample) else { return }
     CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
     guard let context = CGContext(data: CVPixelBufferGetBaseAddress(imageBuffer),
@@ -26,8 +27,8 @@ extension ViewController {
       let quartzImage = context.makeImage() else { return }
     CVPixelBufferUnlockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
     let frameImage = UIImage(cgImage: quartzImage, scale: 1, orientation: UIImageOrientation.up)
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: 224, height: 224), false, 0.0)
-    frameImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 224, height: 224)))
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: 400, height: 300), false, 0.0)
+    frameImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 400, height: 300)))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
@@ -40,7 +41,6 @@ extension ViewController {
 
     guard let dogFrame = rotatedImg?.toBuffer() else { return }
 
-    print("width: \(rotatedImg?.size.width ?? 0) height: \(rotatedImg?.size.height ?? 0)")
     guard let prediction = try? self.model.prediction(data: dogFrame) else { return }
     DispatchQueue.main.async {
       self.predictionLabel.text = prediction.classLabel
@@ -49,6 +49,8 @@ extension ViewController {
   }
 
   func predict(using sample: CMSampleBuffer) {
+    // image size 224x224
+
     var bufferRef: CVPixelBuffer?
 
     guard let imageBuffer = CMSampleBufferGetImageBuffer(sample) else { return }
