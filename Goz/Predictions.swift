@@ -44,7 +44,7 @@ extension ViewController {
     guard let prediction = try? self.model.prediction(data: dogFrame) else { return }
     DispatchQueue.main.async {
       self.predictionLabel.text = prediction.classLabel
-      //print(prediction.breedProbability)
+      self.bottomController?.predictions = prediction.breedProbability
     }
   }
 

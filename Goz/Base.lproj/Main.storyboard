@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Menlo.ttc">
+            <string>Menlo-Regular</string>
+        </array>
         <array key="TimesNewRomanBold.ttf">
             <string>TimesNewRomanPS-BoldMT</string>
         </array>
@@ -38,13 +41,25 @@
                                             <constraint firstAttribute="height" constant="150" id="npK-j1-2p8"/>
                                         </constraints>
                                     </imageView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6h-8m-JSe">
+                                        <rect key="frame" x="0.0" y="487" width="375" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="wVi-9N-L7G"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="acH-ab-QOc" kind="embed" id="ZYI-XS-Avg"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="g6h-8m-JSe" secondAttribute="bottom" id="U4f-lB-jQF"/>
                                     <constraint firstItem="AEh-1y-8s7" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" constant="15" id="Ws8-lY-qQy"/>
                                     <constraint firstAttribute="trailing" secondItem="tWw-l0-vaa" secondAttribute="trailing" constant="15" id="k99-Fm-A3i"/>
                                     <constraint firstItem="AEh-1y-8s7" firstAttribute="top" secondItem="taQ-nn-FaB" secondAttribute="top" constant="30" id="kej-K1-6P1"/>
+                                    <constraint firstItem="g6h-8m-JSe" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" id="lYE-fA-eS0"/>
                                     <constraint firstItem="tWw-l0-vaa" firstAttribute="centerY" secondItem="AEh-1y-8s7" secondAttribute="centerY" id="mNT-fF-xMl"/>
+                                    <constraint firstAttribute="trailing" secondItem="g6h-8m-JSe" secondAttribute="trailing" id="soN-un-u08"/>
                                     <constraint firstItem="tWw-l0-vaa" firstAttribute="leading" secondItem="AEh-1y-8s7" secondAttribute="trailing" constant="10" id="zRe-nA-oLh"/>
                                 </constraints>
                             </view>
@@ -67,6 +82,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23.199999999999999" y="33.733133433283363"/>
+        </scene>
+        <!--Insightful View Controller-->
+        <scene sceneID="hF5-RY-RrS">
+            <objects>
+                <viewController id="acH-ab-QOc" customClass="InsightfulViewController" customModule="Goz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yBQ-lY-9pg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bhI-S7-xYh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1H-PS-0jK">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upj-Ta-pyr">
+                                        <rect key="frame" x="0.0" y="45" width="375" height="45"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsK-cH-oPU">
+                                        <rect key="frame" x="0.0" y="90" width="375" height="45"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUw-Ct-7RF">
+                                        <rect key="frame" x="0.0" y="135" width="375" height="45"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bhI-S7-xYh" secondAttribute="trailing" id="KXu-uP-nGK"/>
+                            <constraint firstItem="bhI-S7-xYh" firstAttribute="leading" secondItem="yBQ-lY-9pg" secondAttribute="leading" id="to3-vH-CqP"/>
+                            <constraint firstAttribute="bottom" secondItem="bhI-S7-xYh" secondAttribute="bottom" id="xAu-vE-rmG"/>
+                            <constraint firstItem="bhI-S7-xYh" firstAttribute="top" secondItem="yBQ-lY-9pg" secondAttribute="top" id="zUn-4V-omK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outletCollection property="labels" destination="tsK-cH-oPU" collectionClass="NSMutableArray" id="PzN-bs-keK"/>
+                        <outletCollection property="labels" destination="Upj-Ta-pyr" collectionClass="NSMutableArray" id="UVq-FJ-4AA"/>
+                        <outletCollection property="labels" destination="L1H-PS-0jK" collectionClass="NSMutableArray" id="xvR-zh-gfD"/>
+                        <outletCollection property="labels" destination="xUw-Ct-7RF" collectionClass="NSMutableArray" id="uJT-wh-kF9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TI4-ij-onK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="579"/>
         </scene>
     </scenes>
 </document>

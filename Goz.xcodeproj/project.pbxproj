@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC042CED1FB2830E00B7A752 /* TeenGoz.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AC042CEC1FB2830E00B7A752 /* TeenGoz.mlmodel */; };
 		AC042CEF1FB292E400B7A752 /* AdultGoz.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AC042CEE1FB292E400B7A752 /* AdultGoz.mlmodel */; };
+		AC042CF11FB29FE400B7A752 /* InsightfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */; };
 		AC1884351FB1711200708377 /* Goz.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AC1884341FB1711200708377 /* Goz.mlmodel */; };
 		AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */; };
 		AC3C89CD1FB14D52008D47FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89CC1FB14D52008D47FD /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		AC042CEC1FB2830E00B7A752 /* TeenGoz.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeenGoz.mlmodel; sourceTree = "<group>"; };
 		AC042CEE1FB292E400B7A752 /* AdultGoz.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AdultGoz.mlmodel; sourceTree = "<group>"; };
+		AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightfulViewController.swift; sourceTree = "<group>"; };
 		AC1884341FB1711200708377 /* Goz.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Goz.mlmodel; sourceTree = "<group>"; };
 		AC3C89C71FB14D52008D47FD /* Goz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */,
 				AC3C89CC1FB14D52008D47FD /* ViewController.swift */,
+				AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */,
 				AC8C1C6A1FB25020005C6C5C /* UIImageExtensions.swift */,
 				AC8C1C6C1FB25A12005C6C5C /* CameraExtensions.swift */,
 				AC8C1C6E1FB25B27005C6C5C /* Predictions.swift */,
@@ -281,6 +284,7 @@
 				AC8C1C6D1FB25A12005C6C5C /* CameraExtensions.swift in Sources */,
 				AC042CEF1FB292E400B7A752 /* AdultGoz.mlmodel in Sources */,
 				AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */,
+				AC042CF11FB29FE400B7A752 /* InsightfulViewController.swift in Sources */,
 				AC1884351FB1711200708377 /* Goz.mlmodel in Sources */,
 				AC8C1C6F1FB25B27005C6C5C /* Predictions.swift in Sources */,
 				AC8C1C6B1FB25020005C6C5C /* UIImageExtensions.swift in Sources */,

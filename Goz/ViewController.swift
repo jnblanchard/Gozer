@@ -13,6 +13,11 @@ import Accelerate
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
   let model = AdultGoz()
+  var bottomController: InsightfulViewController? {
+    return childViewControllers.first(where: { (vc) -> Bool in
+      return vc is InsightfulViewController
+    }) as? InsightfulViewController
+  }
 
   let videoBufferQueue = DispatchQueue(label: "Video Output",
                                        autoreleaseFrequency: .workItem)
@@ -54,9 +59,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     poorPredict(using: sampleBuffer)
   }
 
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {}
 
   override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
 }
