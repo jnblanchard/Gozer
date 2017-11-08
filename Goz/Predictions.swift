@@ -131,9 +131,9 @@ extension ViewController: Insights {
 
   func curatePrediction() {
     guard let firstPlace = consensus(on: 0), let secondPlace = consensus(on: 1), let thirdPlace = consensus(on: 2) else { return }
-    let first = "1. \(firstPlace.0), \(firstPlace.1.rounded(toPlaces: 4)*100)%"
-    let second = "2. \(secondPlace.0), \(secondPlace.1.rounded(toPlaces: 4)*100)%"
-    let third = "1. \(thirdPlace.0), \(thirdPlace.1.rounded(toPlaces: 4)*100)%"
+    let first = "1: \(firstPlace.0), \(firstPlace.1.rounded(toPlaces: 4)*100)%"
+    let second = "2: \(secondPlace.0), \(secondPlace.1.rounded(toPlaces: 4)*100)%"
+    let third = "3: \(thirdPlace.0), \(thirdPlace.1.rounded(toPlaces: 4)*100)%"
     let alert = UIAlertController(title: "Prediction Curated", message: "\(first)\n\(second)\n\(third)", preferredStyle: .alert)
     let okay = UIAlertAction(title: "okay", style: .default, handler: nil)
     alert.addAction(okay)
