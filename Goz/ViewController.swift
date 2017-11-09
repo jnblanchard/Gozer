@@ -40,6 +40,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   override var shouldAutorotate: Bool { return true }
 
   var predictions: [[(String, Double)]] = [[]]
+  var picking: Bool = false
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -90,6 +91,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     predictions.removeAll()
     predictionIndicator.tag = 14
   }
+
+  @IBAction func importPhotoTapped(_ sender: Any) {
+    let picker = UIImagePickerController()
+    picker.allowsEditing = false
+    picker.delegate = self
+    picker.sourceType = .photoLibrary
+    present(picker, animated: true, completion: nil)
+  }
+
 
   @objc func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
     guard let devicePoint = previewLayer?.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view)) else { return }
