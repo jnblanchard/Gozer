@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "thePhotos.png",
       "scale" : "1x"
     },
     {
@@ -10,7 +11,6 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "goz.png",
       "scale" : "3x"
     }
   ],

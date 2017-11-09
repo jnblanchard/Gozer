@@ -32,7 +32,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
   @IBOutlet var predictionIndicator: UIActivityIndicatorView!
   @IBOutlet var cameraParentView: UIView!
-  @IBOutlet var cameraButtons: [UIButton]!
+  @IBOutlet var cameraImageViews: [UIImageView]!
+  
   var previewLayer: AVCaptureVideoPreviewLayer?
 
   override var prefersStatusBarHidden: Bool { return true }
@@ -63,7 +64,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     guard orientation != lastOrientation else { return }
     lastOrientation = orientation
 
-    for button in cameraButtons { button.rotateViewForOrientations(orientation: orientation) }
+    for imageView in cameraImageViews { imageView.rotateViewForOrientations(orientation: orientation) }
 
     bottomController?.orientation = orientation
   }
@@ -86,13 +87,28 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     stopSession()
   }
 
-  @IBAction func sparkPredictionTapped(_ sender: Any) {
-    predictionIndicator.startAnimating()
-    predictions.removeAll()
-    predictionIndicator.tag = 14
+
+  @IBAction func torchTapped(_ sender: Any) {
+    guard let device = backDevice else { return }
+    do {
+      try device.lockForConfiguration()
+      let torchSwitch = device.torchMode == .on
+      device.torchMode = torchSwitch ? .off : .on
+      guard let imageView = cameraImageViews.first(where: { (temp) -> Bool in
+        return temp.tag == 5
+      }) else { return }
+      if device.torchMode == .on {
+        try device.setTorchModeOn(level: 0.7)
+        imageView.image = #imageLiteral(resourceName: "candleOn")
+      } else {
+        imageView.image = #imageLiteral(resourceName: "candleOff")
+      }
+    } catch {
+      debugPrint(error)
+    }
   }
 
-  @IBAction func importPhotoTapped(_ sender: Any) {
+  @IBAction func uploadTapped(_ sender: Any) {
     let picker = UIImagePickerController()
     picker.allowsEditing = false
     picker.delegate = self
@@ -100,25 +116,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     present(picker, animated: true, completion: nil)
   }
 
+  @IBAction func predictionPugTapped(_ sender: Any) {
+    predictionIndicator.startAnimating()
+    predictions.removeAll()
+    predictionIndicator.tag = 14
+  }
 
   @objc func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
     guard let devicePoint = previewLayer?.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view)) else { return }
     focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
-  }
-
-  @IBAction func torchButtonTapped(_ sender: UIButton) {
-    guard let device = backDevice else { return }
-    do {
-      try device.lockForConfiguration()
-      let torchSwitch = device.torchMode == .on
-      device.torchMode = torchSwitch ? .off : .on
-      if device.torchMode == .on {
-        try device.setTorchModeOn(level: 0.7)
-      }
-      sender.setTitle(torchSwitch ? "TorchON" : "TorchOFF", for: .normal)
-    } catch {
-      debugPrint(error)
-    }
   }
 
   func captureOutput(_ captureOutput: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
