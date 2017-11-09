@@ -33,17 +33,20 @@ extension ViewController {
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
 
-    let rotatedImg = scaledImage.imageRotatedBy(degrees: 90, flipX: false, flipY: true)
-
-    DispatchQueue.main.async {
-      self.predictionImageView.image = rotatedImg
+    var rotatedImg: UIImage?
+    switch UIDevice.current.orientation {
+    case .landscapeLeft:
+      rotatedImg = scaledImage.imageRotatedBy(degrees: 90, flipX: false, flipY: false)
+    case .landscapeRight:
+      rotatedImg = scaledImage.imageRotatedBy(degrees: 90, flipX: true, flipY: false)
+    default:
+      rotatedImg = scaledImage.imageRotatedBy(degrees: 90, flipX: false, flipY: true)
     }
 
     guard let dogFrame = rotatedImg?.toBuffer() else { return }
 
     guard let prediction = try? self.model.prediction(data: dogFrame) else { return }
     DispatchQueue.main.async {
-      self.predictionLabel.text = prediction.classLabel
       self.bottomController?.predictions = prediction.breedProbability
     }
   }
@@ -89,13 +92,13 @@ extension ViewController {
     guard let dogBuf = bufferRef else { return }
     let dogImg = UIImage(ciImage: CIImage(cvPixelBuffer: dogBuf))
     DispatchQueue.main.async {
-      self.predictionImageView.image = dogImg
-      self.predictionImageView.backgroundColor = UIColor.yellow
+//      self.predictionImageView.image = dogImg
+//      self.predictionImageView.backgroundColor = UIColor.yellow
     }
 
     guard let prediction = try? self.model.prediction(data: dogBuf) else { return }
     DispatchQueue.main.async {
-      self.predictionLabel.text = prediction.classLabel
+//      self.predictionLabel.text = prediction.classLabel
       //print(prediction.breedProbability)
     }
   }
@@ -144,9 +147,9 @@ extension ViewController: Insights {
 
 
   func topPredictionsFromFrame(entry: [(String, Double)]) {
-    guard predictionLabel.tag == 14 else { return }
+    guard predictionIndicator.tag == 14 else { return }
     guard predictions.count < 18 else {
-      predictionLabel.tag = 2
+      predictionIndicator.tag = 2
       curatePrediction()
       return
     }

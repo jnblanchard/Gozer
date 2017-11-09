@@ -30,8 +30,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
   @IBOutlet var predictionIndicator: UIActivityIndicatorView!
   @IBOutlet var cameraParentView: UIView!
-  @IBOutlet var predictionLabel: UILabel!
-  @IBOutlet var predictionImageView: UIImageView!
   var previewLayer: AVCaptureVideoPreviewLayer?
 
   override var prefersStatusBarHidden: Bool { return true }
@@ -52,6 +50,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     startSession()
   }
 
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    UIView.setAnimationsEnabled(false)
+    let value = UIInterfaceOrientation.portrait.rawValue
+    UIDevice.current.setValue(value, forKey: "orientation")
+    UIView.setAnimationsEnabled(true)
+  }
+
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     stopSession()
@@ -60,7 +66,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   @IBAction func sparkPredictionTapped(_ sender: Any) {
     predictionIndicator.startAnimating()
     predictions.removeAll()
-    predictionLabel.tag = 14
+    predictionIndicator.tag = 14
   }
 
   @objc func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
