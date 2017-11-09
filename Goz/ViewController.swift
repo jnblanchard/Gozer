@@ -64,7 +64,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     guard orientation != lastOrientation else { return }
     lastOrientation = orientation
 
-    for imageView in cameraImageViews { imageView.rotateViewForOrientations(orientation: orientation) }
+    UIView.animate(withDuration: 0.4) {
+      for imageView in self.cameraImageViews { imageView.rotateViewForOrientations(orientation: orientation) }
+    }
 
     bottomController?.orientation = orientation
   }

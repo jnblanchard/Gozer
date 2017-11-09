@@ -20,7 +20,7 @@ class InsightfulViewController: UIViewController {
 
   var orientation: UIDeviceOrientation = .portrait {
     didSet {
-      UIView.animate(withDuration: 0.25) {
+      UIView.animate(withDuration: 0.5) {
         switch self.orientation {
         case .landscapeRight:
           self.labStackView.axis = .horizontal
@@ -36,11 +36,11 @@ class InsightfulViewController: UIViewController {
 
   var predictions: [String : Double]? {
     didSet {
-      guard var wholeDict = predictions else { return }
+      guard let wholeDict = predictions else { return }
       var topTups = orderedFirstNInferences(n: labels.count, dict: wholeDict)
       for label in labels {
         let prediction = topTups[label.tag]
-        label.text = "\(prediction.1.rounded(toPlaces: 3)) \n \(prediction.0.replacingOccurrences(of: "_", with: " "))"
+        label.text = "\(prediction.1.rounded(toPlaces: 4)*100)% \n \(prediction.0.replacingOccurrences(of: "_", with: " "))"
       }
       delegate?.topPredictionsFromFrame(entry: topTups)
     }
