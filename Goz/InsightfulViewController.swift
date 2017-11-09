@@ -14,7 +14,25 @@ class InsightfulViewController: UIViewController {
 
   @IBOutlet var labels: [UILabel]!
 
+  @IBOutlet var labStackView: UIStackView!
+
   var delegate: Insights?
+
+  var orientation: UIDeviceOrientation = .portrait {
+    didSet {
+      UIView.animate(withDuration: 0.25) {
+        switch self.orientation {
+        case .landscapeRight:
+          self.labStackView.axis = .horizontal
+        case .landscapeLeft:
+          self.labStackView.axis = .horizontal
+        default:
+          self.labStackView.axis = .vertical
+        }
+        for label in self.labels { label.rotateViewForOrientations(orientation: self.orientation) }
+      }
+    }
+  }
 
   var predictions: [String : Double]? {
     didSet {
@@ -29,7 +47,7 @@ class InsightfulViewController: UIViewController {
       }
       for label in labels {
         let prediction = topTups[label.tag]
-        label.text = "\(prediction.1.rounded(toPlaces: 3)) \n \(prediction.0)"
+        label.text = "\(prediction.1.rounded(toPlaces: 3)) \n \(prediction.0.replacingOccurrences(of: "_", with: " "))"
       }
       delegate?.topPredictionsFromFrame(entry: topTups)
     }

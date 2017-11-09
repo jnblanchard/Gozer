@@ -18,6 +18,7 @@
 		AC8C1C6B1FB25020005C6C5C /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C1C6A1FB25020005C6C5C /* UIImageExtensions.swift */; };
 		AC8C1C6D1FB25A12005C6C5C /* CameraExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C1C6C1FB25A12005C6C5C /* CameraExtensions.swift */; };
 		AC8C1C6F1FB25B27005C6C5C /* Predictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C1C6E1FB25B27005C6C5C /* Predictions.swift */; };
+		AC9E37E91FB4D21A00B60AF0 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E37E81FB4D21A00B60AF0 /* ViewExtensions.swift */; };
 		ACAEE98E1FB3970F00EA105A /* AdultGoz.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ACAEE98D1FB3970F00EA105A /* AdultGoz.mlmodel */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		AC8C1C6A1FB25020005C6C5C /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		AC8C1C6C1FB25A12005C6C5C /* CameraExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraExtensions.swift; sourceTree = "<group>"; };
 		AC8C1C6E1FB25B27005C6C5C /* Predictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predictions.swift; sourceTree = "<group>"; };
+		AC9E37E81FB4D21A00B60AF0 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		ACAEE98D1FB3970F00EA105A /* AdultGoz.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AdultGoz.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 				AC3C89CC1FB14D52008D47FD /* ViewController.swift */,
 				AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */,
 				AC8C1C6A1FB25020005C6C5C /* UIImageExtensions.swift */,
+				AC9E37E81FB4D21A00B60AF0 /* ViewExtensions.swift */,
 				AC8C1C6C1FB25A12005C6C5C /* CameraExtensions.swift */,
 				AC8C1C6E1FB25B27005C6C5C /* Predictions.swift */,
 				ACAEE98D1FB3970F00EA105A /* AdultGoz.mlmodel */,
@@ -276,6 +279,7 @@
 			files = (
 				AC3C89CD1FB14D52008D47FD /* ViewController.swift in Sources */,
 				ACAEE98E1FB3970F00EA105A /* AdultGoz.mlmodel in Sources */,
+				AC9E37E91FB4D21A00B60AF0 /* ViewExtensions.swift in Sources */,
 				AC8C1C6D1FB25A12005C6C5C /* CameraExtensions.swift in Sources */,
 				AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */,
 				AC042CF11FB29FE400B7A752 /* InsightfulViewController.swift in Sources */,

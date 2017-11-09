@@ -42,7 +42,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-dg-ezY">
-                                                        <rect key="frame" x="0.0" y="16" width="187.5" height="33"/>
+                                                        <rect key="frame" x="0.0" y="16" width="125" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
                                                         <state key="normal" title="TorchON">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,8 +51,15 @@
                                                             <action selector="torchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gsb-qj-Uqn"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufk-0P-oKk">
+                                                        <rect key="frame" x="125" y="16" width="125" height="33"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
+                                                        <state key="normal" title="Photo">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7f-oe-umz">
-                                                        <rect key="frame" x="187.5" y="16" width="187.5" height="33"/>
+                                                        <rect key="frame" x="250" y="16" width="125" height="33"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
                                                         <state key="normal" title="Spark">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -74,7 +81,7 @@
                                         </constraints>
                                     </view>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5UP-lG-AKs">
-                                        <rect key="frame" x="263.5" y="560" width="37" height="37"/>
+                                        <rect key="frame" x="294" y="560" width="37" height="37"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -98,7 +105,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.40000000000000002" green="1" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="taQ-nn-FaB" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="axc-b0-6hh"/>
                             <constraint firstItem="taQ-nn-FaB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dhs-ni-qhp"/>
@@ -110,6 +117,9 @@
                     <connections>
                         <outlet property="cameraParentView" destination="taQ-nn-FaB" id="wOp-Lc-3QO"/>
                         <outlet property="predictionIndicator" destination="5UP-lG-AKs" id="HJo-vJ-geb"/>
+                        <outletCollection property="cameraButtons" destination="Rb7-dg-ezY" collectionClass="NSMutableArray" id="muV-eX-r7g"/>
+                        <outletCollection property="cameraButtons" destination="Ufk-0P-oKk" collectionClass="NSMutableArray" id="0d0-hj-Oxk"/>
+                        <outletCollection property="cameraButtons" destination="H7f-oe-umz" collectionClass="NSMutableArray" id="VgF-xB-H71"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -125,22 +135,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bhI-S7-xYh">
-                                <rect key="frame" x="0.0" y="35" width="375" height="130"/>
+                                <rect key="frame" x="0.0" y="35" width="375" height="105"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1H-PS-0jK">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upj-Ta-pyr">
-                                        <rect key="frame" x="0.0" y="43.5" width="375" height="43"/>
+                                        <rect key="frame" x="0.0" y="35" width="375" height="35"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsK-cH-oPU">
-                                        <rect key="frame" x="0.0" y="86.5" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="70" width="375" height="35"/>
                                         <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -152,12 +162,13 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="bhI-S7-xYh" secondAttribute="trailing" id="KXu-uP-nGK"/>
                             <constraint firstItem="bhI-S7-xYh" firstAttribute="leading" secondItem="yBQ-lY-9pg" secondAttribute="leading" id="to3-vH-CqP"/>
-                            <constraint firstAttribute="bottom" secondItem="bhI-S7-xYh" secondAttribute="bottom" id="xAu-vE-rmG"/>
+                            <constraint firstAttribute="bottom" secondItem="bhI-S7-xYh" secondAttribute="bottom" constant="25" id="xAu-vE-rmG"/>
                             <constraint firstItem="bhI-S7-xYh" firstAttribute="top" secondItem="yBQ-lY-9pg" secondAttribute="top" constant="35" id="zUn-4V-omK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VuD-u9-dmy"/>
                     </view>
                     <connections>
+                        <outlet property="labStackView" destination="bhI-S7-xYh" id="K1g-9K-cPe"/>
                         <outletCollection property="labels" destination="tsK-cH-oPU" collectionClass="NSMutableArray" id="PzN-bs-keK"/>
                         <outletCollection property="labels" destination="Upj-Ta-pyr" collectionClass="NSMutableArray" id="UVq-FJ-4AA"/>
                         <outletCollection property="labels" destination="L1H-PS-0jK" collectionClass="NSMutableArray" id="xvR-zh-gfD"/>

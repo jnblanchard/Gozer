@@ -25,11 +25,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   let captureSession = AVCaptureSession()
   let output = AVCaptureVideoDataOutput()
 
+  var lastOrientation: UIDeviceOrientation = .portrait
+
   var backDevice: AVCaptureDevice?
   var backInput: AVCaptureInput?
 
   @IBOutlet var predictionIndicator: UIActivityIndicatorView!
   @IBOutlet var cameraParentView: UIView!
+  @IBOutlet var cameraButtons: [UIButton]!
   var previewLayer: AVCaptureVideoPreviewLayer?
 
   override var prefersStatusBarHidden: Bool { return true }
@@ -43,6 +46,25 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     configure()
     bottomController?.delegate = self
     cameraParentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusAndExposeTap)))
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(orientationChanged),
+                                           name: NSNotification.Name.UIDeviceOrientationDidChange,
+                                           object: nil)
+  }
+
+  @objc func orientationChanged(notification: Notification) {
+    let rawNewOrientation = notification.userInfo?["newOrientation"] as? Int
+    let newOrientation = rawNewOrientation != nil ? UIDeviceOrientation(rawValue: rawNewOrientation!) : nil
+
+    let orientation = newOrientation ?? UIDevice.current.orientation
+
+    guard orientation == .portrait || orientation == .landscapeLeft || orientation == .landscapeRight else { return }
+    guard orientation != lastOrientation else { return }
+    lastOrientation = orientation
+
+    for button in cameraButtons { button.rotateViewForOrientations(orientation: orientation) }
+
+    bottomController?.orientation = orientation
   }
 
   override func viewWillAppear(_ animated: Bool) {
