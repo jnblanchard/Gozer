@@ -58,7 +58,7 @@
                                                             <outletCollection property="gestureRecognizers" destination="CGN-i1-2yc" appends="YES" id="LzO-t7-6cw"/>
                                                         </connections>
                                                     </imageView>
-                                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pug" translatesAutoresizingMaskIntoConstraints="NO" id="3jl-Fq-kBg">
+                                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pug" translatesAutoresizingMaskIntoConstraints="NO" id="3jl-Fq-kBg">
                                                         <rect key="frame" x="125" y="0.0" width="125" height="55"/>
                                                         <gestureRecognizers/>
                                                         <connections>
@@ -224,21 +224,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGv-EH-Pb1">
-                                <rect key="frame" x="123" y="560" width="128" height="128"/>
+                                <rect key="frame" x="123" y="554" width="128" height="128"/>
                                 <state key="normal" image="pug"/>
                                 <connections>
                                     <action selector="dismissTapped:" destination="NgC-IF-jZ8" eventType="touchUpInside" id="UTn-Cu-Ozh"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IX6-3T-TIn">
-                                <rect key="frame" x="16" y="93" width="343" height="467"/>
+                                <rect key="frame" x="16" y="93" width="343" height="461"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dCC-JK-aKQ" firstAttribute="top" secondItem="wJt-N7-Qri" secondAttribute="top" id="07Y-yi-brZ"/>
                             <constraint firstItem="IX6-3T-TIn" firstAttribute="leading" secondItem="wJt-N7-Qri" secondAttribute="leadingMargin" id="227-4x-y8O"/>
-                            <constraint firstItem="qGv-EH-Pb1" firstAttribute="bottom" secondItem="wJt-N7-Qri" secondAttribute="bottom" constant="21" id="3Go-xv-aDE"/>
+                            <constraint firstItem="qGv-EH-Pb1" firstAttribute="bottom" secondItem="wJt-N7-Qri" secondAttribute="bottom" constant="15" id="3Go-xv-aDE"/>
                             <constraint firstItem="v36-5r-xau" firstAttribute="top" secondItem="dCC-JK-aKQ" secondAttribute="top" id="4GE-Pv-5qt"/>
                             <constraint firstItem="IX6-3T-TIn" firstAttribute="top" secondItem="wXb-cu-ulq" secondAttribute="bottom" constant="15" id="I19-ck-SCG"/>
                             <constraint firstItem="wXb-cu-ulq" firstAttribute="centerX" secondItem="wJt-N7-Qri" secondAttribute="centerX" id="I8f-xO-EGS"/>
