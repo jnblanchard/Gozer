@@ -144,7 +144,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   }
 
   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    poorPredict(using: sampleBuffer)
+    poorPredict(using: sampleBuffer, connection: connection)
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

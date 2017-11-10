@@ -12,7 +12,7 @@ import AVFoundation
 import Accelerate
 
 extension ViewController {
-  func poorPredict(using sample: CMSampleBuffer) {
+  func poorPredict(using sample: CMSampleBuffer, connection: AVCaptureConnection) {
     //image size 400x300
     guard let imageBuffer = CMSampleBufferGetImageBuffer(sample) else { return }
     CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
@@ -26,25 +26,27 @@ extension ViewController {
                                     | CGBitmapInfo.byteOrder32Little.rawValue),
       let quartzImage = context.makeImage() else { return }
     CVPixelBufferUnlockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
-    let frameImage = UIImage(cgImage: quartzImage, scale: 1, orientation: UIImageOrientation.up)
+    var frameImage = UIImage(cgImage: quartzImage, scale: 1, orientation: UIImageOrientation.up)
 
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: 400, height: 300), false, 0.0)
-    frameImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 400, height: 300)))
+    switch lastOrientation {
+    case .landscapeLeft:
+      debugPrint("ll")
+      frameImage = frameImage.imageRotatedBy(degrees: 0, flipX: false, flipY: true) ?? frameImage
+    case .landscapeRight:
+      debugPrint("lr")
+      frameImage = frameImage.imageRotatedBy(degrees: 0, flipX: true, flipY: false) ?? frameImage
+    default:
+      debugPrint("def")
+      frameImage = frameImage.imageRotatedBy(degrees: 90, flipX: false, flipY: true) ?? frameImage
+    }
+
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: 300, height: 400), false, 0.0)
+    frameImage.draw(in: aspectFitFrame(destSize: CGSize(width: 300, height: 400), srcSize: frameImage.size))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
 
-    var rotatedImg: UIImage?
-    switch UIDevice.current.orientation {
-    case .landscapeLeft:
-      rotatedImg = scaledImage.imageRotatedBy(degrees: 90, flipX: false, flipY: false)
-    case .landscapeRight:
-      rotatedImg = scaledImage.imageRotatedBy(degrees: 90, flipX: true, flipY: false)
-    default:
-      rotatedImg = scaledImage.imageRotatedBy(degrees: 90, flipX: false, flipY: true)
-    }
-
-    guard let dogFrame = rotatedImg?.toBuffer() else { return }
+    guard let dogFrame = scaledImage.toBuffer() else { return }
 
     guard let prediction = try? self.model.prediction(data: dogFrame) else { return }
     DispatchQueue.main.async {
@@ -102,6 +104,29 @@ extension ViewController {
 //      self.predictionLabel.text = prediction.classLabel
       //print(prediction.breedProbability)
     }
+  }
+
+  func aspectFitFrame(destSize:CGSize, srcSize:CGSize) -> CGRect{
+    let imageSize:CGSize  = srcSize
+    let viewSize:CGSize = destSize
+
+    let hfactor : CGFloat = imageSize.width/viewSize.width
+    let vfactor : CGFloat = imageSize.height/viewSize.height
+
+    let factor : CGFloat = max(hfactor, vfactor)
+
+    let newWidth : CGFloat = imageSize.width / factor
+    let newHeight : CGFloat = imageSize.height / factor
+
+    var x:CGFloat = 0.0
+    var y:CGFloat = 0.0
+    if newWidth > newHeight{
+      y = (destSize.height - newHeight)/2
+    }
+    if newHeight > newWidth {
+      x = (destSize.width - newWidth)/2
+    }
+    return CGRect(x: x, y: y, width: newWidth, height: newHeight)
   }
 }
 
