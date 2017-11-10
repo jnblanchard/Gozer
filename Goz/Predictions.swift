@@ -41,6 +41,7 @@ extension ViewController {
     }
 
     UIGraphicsBeginImageContextWithOptions(CGSize(width: 300, height: 400), false, 0.0)
+    //frameImage.draw(in: CGRect(x: 0, y: 0, width: 300, height: 400))
     frameImage.draw(in: aspectFitFrame(destSize: CGSize(width: 300, height: 400), srcSize: frameImage.size))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -107,16 +108,13 @@ extension ViewController {
   }
 
   func aspectFitFrame(destSize:CGSize, srcSize:CGSize) -> CGRect{
-    let imageSize:CGSize  = srcSize
-    let viewSize:CGSize = destSize
-
-    let hfactor : CGFloat = imageSize.width/viewSize.width
-    let vfactor : CGFloat = imageSize.height/viewSize.height
+    let hfactor : CGFloat = srcSize.width/destSize.width
+    let vfactor : CGFloat = srcSize.height/destSize.height
 
     let factor : CGFloat = max(hfactor, vfactor)
 
-    let newWidth : CGFloat = imageSize.width / factor
-    let newHeight : CGFloat = imageSize.height / factor
+    let newWidth : CGFloat = srcSize.width / factor
+    let newHeight : CGFloat = srcSize.height / factor
 
     var x:CGFloat = 0.0
     var y:CGFloat = 0.0
