@@ -13,7 +13,8 @@ import Accelerate
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
   let model = AdultGoz()
-  var bottomController: InsightfulViewController? {
+
+  var insightController: InsightfulViewController? {
     return childViewControllers.first(where: { (vc) -> Bool in
       return vc is InsightfulViewController
     }) as? InsightfulViewController
@@ -38,20 +39,39 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
   override var prefersStatusBarHidden: Bool { return true }
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
-  override var shouldAutorotate: Bool { return true }
 
   var predictions: [[(String, Double)]] = [[]]
+  var predictionPlacement: [(String, Double)?] = []
   var picking: Bool = false
 
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
-    bottomController?.delegate = self
+    predictionIndicator.layer.borderColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.4).cgColor
+    predictionIndicator.layer.borderWidth = 1.0
+    insightController?.delegate = self
     cameraParentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusAndExposeTap)))
     NotificationCenter.default.addObserver(self,
                                            selector: #selector(orientationChanged),
                                            name: NSNotification.Name.UIDeviceOrientationDidChange,
                                            object: nil)
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    UIView.setAnimationsEnabled(false)
+    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
+    UIView.setAnimationsEnabled(true)
+    startSession()
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    stopSession()
   }
 
   @objc func orientationChanged(notification: Notification) {
@@ -68,27 +88,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
       for imageView in self.cameraImageViews { imageView.rotateViewForOrientations(orientation: orientation) }
     }
 
-    bottomController?.orientation = orientation
+    insightController?.orientation = orientation
   }
-
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    startSession()
-  }
-
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    UIView.setAnimationsEnabled(false)
-    let value = UIInterfaceOrientation.portrait.rawValue
-    UIDevice.current.setValue(value, forKey: "orientation")
-    UIView.setAnimationsEnabled(true)
-  }
-
-  override func viewDidDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
-    stopSession()
-  }
-
 
   @IBAction func torchTapped(_ sender: Any) {
     guard let device = backDevice else { return }
@@ -119,6 +120,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   }
 
   @IBAction func predictionPugTapped(_ sender: Any) {
+    guard predictionIndicator.tag != 14 else { return }
     predictionIndicator.startAnimating()
     predictions.removeAll()
     predictionIndicator.tag = 14
@@ -137,7 +139,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     poorPredict(using: sampleBuffer)
   }
 
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {}
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let ivc = segue.destination as? InferenceViewController else { return }
+    ivc.placementData = predictionPlacement
+    predictionPlacement.removeAll()
+  }
 
   override func didReceiveMemoryWarning() { super.didReceiveMemoryWarning() }
 }

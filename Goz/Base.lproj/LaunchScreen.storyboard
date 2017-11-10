@@ -17,16 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goz" translatesAutoresizingMaskIntoConstraints="NO" id="eHT-cA-5xf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hello" translatesAutoresizingMaskIntoConstraints="NO" id="eHT-cA-5xf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="1" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.40000000000000002" green="1" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="eHT-cA-5xf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="5CG-Es-SPJ"/>
-                            <constraint firstItem="eHT-cA-5xf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Cvq-JU-dtG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eHT-cA-5xf" secondAttribute="trailing" id="XF7-qm-Uwe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eHT-cA-5xf" secondAttribute="bottom" id="beM-ia-GMk"/>
+                            <constraint firstItem="eHT-cA-5xf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="58O-jx-McT"/>
+                            <constraint firstItem="eHT-cA-5xf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="UKB-GV-XGB"/>
+                            <constraint firstAttribute="trailing" secondItem="eHT-cA-5xf" secondAttribute="trailing" id="bKC-z9-qEN"/>
+                            <constraint firstItem="eHT-cA-5xf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="xF0-vP-kg9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -37,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="goz" width="3024" height="4032"/>
+        <image name="hello" width="440" height="587"/>
     </resources>
 </document>

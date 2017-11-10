@@ -5,11 +5,13 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Futura.ttc">
+            <string>Futura-Bold</string>
             <string>Futura-Medium</string>
         </array>
     </customFonts>
@@ -22,6 +24,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="working" translatesAutoresizingMaskIntoConstraints="NO" id="hou-H0-7WG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taQ-nn-FaB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -47,18 +53,18 @@
                                                             <outletCollection property="gestureRecognizers" destination="CGN-i1-2yc" appends="YES" id="LzO-t7-6cw"/>
                                                         </connections>
                                                     </imageView>
-                                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload" translatesAutoresizingMaskIntoConstraints="NO" id="3oJ-BL-m3m">
+                                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pug" translatesAutoresizingMaskIntoConstraints="NO" id="3jl-Fq-kBg">
                                                         <rect key="frame" x="125" y="0.0" width="125" height="55"/>
                                                         <gestureRecognizers/>
                                                         <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="rsP-fW-ybe" appends="YES" id="w5N-qo-ubZ"/>
+                                                            <outletCollection property="gestureRecognizers" destination="nqv-z7-3LL" appends="YES" id="LZf-1I-3Uv"/>
                                                         </connections>
                                                     </imageView>
-                                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pug" translatesAutoresizingMaskIntoConstraints="NO" id="3jl-Fq-kBg">
+                                                    <imageView alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iosphotos" translatesAutoresizingMaskIntoConstraints="NO" id="3oJ-BL-m3m">
                                                         <rect key="frame" x="250" y="0.0" width="125" height="55"/>
                                                         <gestureRecognizers/>
                                                         <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="nqv-z7-3LL" appends="YES" id="LZf-1I-3Uv"/>
+                                                            <outletCollection property="gestureRecognizers" destination="rsP-fW-ybe" appends="YES" id="w5N-qo-ubZ"/>
                                                         </connections>
                                                     </imageView>
                                                 </subviews>
@@ -73,13 +79,19 @@
                                         </constraints>
                                     </view>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5UP-lG-AKs">
-                                        <rect key="frame" x="293.5" y="555" width="37" height="37"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="168.5" y="555" width="37" height="37"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </activityIndicatorView>
@@ -112,6 +124,7 @@
                         <outletCollection property="cameraImageViews" destination="oBY-DG-odE" collectionClass="NSMutableArray" id="SLY-aK-cZ6"/>
                         <outletCollection property="cameraImageViews" destination="3oJ-BL-m3m" collectionClass="NSMutableArray" id="cm1-AV-osW"/>
                         <outletCollection property="cameraImageViews" destination="3jl-Fq-kBg" collectionClass="NSMutableArray" id="Mje-zN-GDE"/>
+                        <segue destination="NgC-IF-jZ8" kind="presentation" identifier="inference" modalTransitionStyle="coverVertical" id="4kV-tC-BXG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -185,10 +198,74 @@
             </objects>
             <point key="canvasLocation" x="-23" y="579"/>
         </scene>
+        <!--Inference View Controller-->
+        <scene sceneID="xrG-Fw-NfY">
+            <objects>
+                <viewController id="NgC-IF-jZ8" customClass="InferenceViewController" customModule="Goz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wJt-N7-Qri">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="dCC-JK-aKQ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v36-5r-xau">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Breed Inference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXb-cu-ulq">
+                                <rect key="frame" x="50" y="45" width="276" height="33"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGv-EH-Pb1">
+                                <rect key="frame" x="123" y="560" width="128" height="128"/>
+                                <state key="normal" image="pug"/>
+                                <connections>
+                                    <action selector="dismissTapped:" destination="NgC-IF-jZ8" eventType="touchUpInside" id="UTn-Cu-Ozh"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IX6-3T-TIn">
+                                <rect key="frame" x="16" y="93" width="343" height="459"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dCC-JK-aKQ" firstAttribute="top" secondItem="wJt-N7-Qri" secondAttribute="top" id="07Y-yi-brZ"/>
+                            <constraint firstItem="IX6-3T-TIn" firstAttribute="leading" secondItem="wJt-N7-Qri" secondAttribute="leadingMargin" id="227-4x-y8O"/>
+                            <constraint firstItem="qGv-EH-Pb1" firstAttribute="bottom" secondItem="wJt-N7-Qri" secondAttribute="bottom" constant="21" id="3Go-xv-aDE"/>
+                            <constraint firstItem="v36-5r-xau" firstAttribute="top" secondItem="dCC-JK-aKQ" secondAttribute="top" id="4GE-Pv-5qt"/>
+                            <constraint firstItem="IX6-3T-TIn" firstAttribute="top" secondItem="wXb-cu-ulq" secondAttribute="bottom" constant="15" id="I19-ck-SCG"/>
+                            <constraint firstItem="wXb-cu-ulq" firstAttribute="centerX" secondItem="wJt-N7-Qri" secondAttribute="centerX" id="I8f-xO-EGS"/>
+                            <constraint firstItem="v36-5r-xau" firstAttribute="bottom" secondItem="dCC-JK-aKQ" secondAttribute="bottom" id="Qm5-u4-Kew"/>
+                            <constraint firstItem="IX6-3T-TIn" firstAttribute="trailing" secondItem="wJt-N7-Qri" secondAttribute="trailingMargin" id="Uwp-dB-gW8"/>
+                            <constraint firstItem="v36-5r-xau" firstAttribute="leading" secondItem="dCC-JK-aKQ" secondAttribute="leading" id="Zo4-pW-TKN"/>
+                            <constraint firstAttribute="trailing" secondItem="dCC-JK-aKQ" secondAttribute="trailing" id="bNc-x7-pRr"/>
+                            <constraint firstItem="dCC-JK-aKQ" firstAttribute="leading" secondItem="wJt-N7-Qri" secondAttribute="leading" id="dww-9L-olh"/>
+                            <constraint firstItem="qGv-EH-Pb1" firstAttribute="top" secondItem="IX6-3T-TIn" secondAttribute="bottom" constant="8" id="hHN-cj-ame"/>
+                            <constraint firstItem="qGv-EH-Pb1" firstAttribute="centerX" secondItem="wJt-N7-Qri" secondAttribute="centerX" id="lzP-BY-fp4"/>
+                            <constraint firstItem="wXb-cu-ulq" firstAttribute="top" secondItem="wJt-N7-Qri" secondAttribute="top" constant="45" id="niG-A6-fVb">
+                                <variation key="heightClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="v36-5r-xau" firstAttribute="trailing" secondItem="dCC-JK-aKQ" secondAttribute="trailing" id="vbp-8f-ocK"/>
+                            <constraint firstAttribute="bottom" secondItem="dCC-JK-aKQ" secondAttribute="bottom" id="wQS-EM-GNF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="stackView" destination="IX6-3T-TIn" id="U0s-PF-RhF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mtx-7I-qFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792.79999999999995" y="33.733133433283363"/>
+        </scene>
     </scenes>
     <resources>
         <image name="candleOff" width="170" height="170"/>
+        <image name="error" width="425" height="567"/>
+        <image name="iosphotos" width="170" height="170"/>
         <image name="pug" width="128" height="128"/>
-        <image name="upload" width="128" height="128"/>
+        <image name="working" width="440" height="587"/>
     </resources>
 </document>

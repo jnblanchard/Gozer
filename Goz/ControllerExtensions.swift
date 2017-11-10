@@ -24,6 +24,10 @@ extension UIViewController {
   }
 
   func present(inferences: [(String, Double)]) {
+
+
+
+
     var i = 0
     let inference = inferences.map { (place) -> String in
       i+=1
@@ -54,8 +58,8 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
     guard let prediction = try? self.model.prediction(data: dogImg) else { return }
     DispatchQueue.main.async {
       self.dismiss(animated: true) {
-        let topPredictions = self.orderedFirstNInferences(n: 3, dict: prediction.breedProbability)
-        self.present(inferences: topPredictions)
+        self.predictionPlacement = self.orderedFirstNInferences(n: 3, dict: prediction.breedProbability)
+        self.performSegue(withIdentifier: "inference", sender: self)
         self.picking = false
       }
     }
