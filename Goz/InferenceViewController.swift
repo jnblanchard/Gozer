@@ -10,8 +10,11 @@ import UIKit
 
 class InferenceViewController: UIViewController {
 
-  @IBOutlet var stackView: UIStackView!
+  override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 
+  @IBOutlet var stackView: UIStackView!
+  @IBOutlet var imageView: UIImageView!
+  var frame: UIImage?
   var placementData: [(String, Double)?] = [] {
     didSet {
       var i = 0
@@ -19,7 +22,7 @@ class InferenceViewController: UIViewController {
         return entry != nil
       }).map { (confirmation) -> String in
         i+=1
-        return "\(confirmation!.1.rounded(toPlaces: 4)*100)%: \(confirmation!.0.replacingOccurrences(of: "_", with: " "))"
+        return "\(confirmation!.1.rounded(toPlaces: 3)*100)%: \(confirmation!.0.replacingOccurrences(of: "_", with: " "))"
       }
       DispatchQueue.main.async {
         for placement in placements {
@@ -27,6 +30,7 @@ class InferenceViewController: UIViewController {
           label.font = UIFont(name: "Futura-Medium", size: 25)
           label.textAlignment = .center
           label.text = placement
+          label.numberOfLines = 0
           label.textColor = UIColor.white
           self.stackView.addArrangedSubview(label)
         }
@@ -37,6 +41,7 @@ class InferenceViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    imageView.image = frame
   }
 
   override func viewDidDisappear(_ animated: Bool) {

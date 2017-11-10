@@ -28,6 +28,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MXd-S4-Esv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.85999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taQ-nn-FaB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
@@ -96,7 +101,6 @@
                                         </userDefinedRuntimeAttributes>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="DcR-kq-adm" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" id="1kN-Jc-0EL"/>
                                     <constraint firstItem="5UP-lG-AKs" firstAttribute="centerX" secondItem="3jl-Fq-kBg" secondAttribute="centerX" id="ETD-Lm-B7t"/>
@@ -211,7 +215,7 @@
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v36-5r-xau">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.85999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dog Breed Inference" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXb-cu-ulq">
                                 <rect key="frame" x="50" y="45" width="276" height="33"/>
@@ -227,7 +231,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IX6-3T-TIn">
-                                <rect key="frame" x="16" y="93" width="343" height="459"/>
+                                <rect key="frame" x="16" y="93" width="343" height="467"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -243,16 +247,18 @@
                             <constraint firstItem="v36-5r-xau" firstAttribute="leading" secondItem="dCC-JK-aKQ" secondAttribute="leading" id="Zo4-pW-TKN"/>
                             <constraint firstAttribute="trailing" secondItem="dCC-JK-aKQ" secondAttribute="trailing" id="bNc-x7-pRr"/>
                             <constraint firstItem="dCC-JK-aKQ" firstAttribute="leading" secondItem="wJt-N7-Qri" secondAttribute="leading" id="dww-9L-olh"/>
-                            <constraint firstItem="qGv-EH-Pb1" firstAttribute="top" secondItem="IX6-3T-TIn" secondAttribute="bottom" constant="8" id="hHN-cj-ame"/>
+                            <constraint firstItem="qGv-EH-Pb1" firstAttribute="top" secondItem="IX6-3T-TIn" secondAttribute="bottom" id="hHN-cj-ame"/>
                             <constraint firstItem="qGv-EH-Pb1" firstAttribute="centerX" secondItem="wJt-N7-Qri" secondAttribute="centerX" id="lzP-BY-fp4"/>
                             <constraint firstItem="wXb-cu-ulq" firstAttribute="top" secondItem="wJt-N7-Qri" secondAttribute="top" constant="45" id="niG-A6-fVb">
-                                <variation key="heightClass=compact" constant="0.0"/>
+                                <variation key="heightClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="v36-5r-xau" firstAttribute="trailing" secondItem="dCC-JK-aKQ" secondAttribute="trailing" id="vbp-8f-ocK"/>
                             <constraint firstAttribute="bottom" secondItem="dCC-JK-aKQ" secondAttribute="bottom" id="wQS-EM-GNF"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="af6-5W-QLn"/>
                     </view>
                     <connections>
+                        <outlet property="imageView" destination="dCC-JK-aKQ" id="ZeO-ui-ieR"/>
                         <outlet property="stackView" destination="IX6-3T-TIn" id="U0s-PF-RhF"/>
                     </connections>
                 </viewController>

@@ -27,6 +27,7 @@ extension ViewController {
       let quartzImage = context.makeImage() else { return }
     CVPixelBufferUnlockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
     let frameImage = UIImage(cgImage: quartzImage, scale: 1, orientation: UIImageOrientation.up)
+
     UIGraphicsBeginImageContextWithOptions(CGSize(width: 400, height: 300), false, 0.0)
     frameImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 400, height: 300)))
 
@@ -142,9 +143,9 @@ extension ViewController: Insights {
 
   func topPredictionsFromFrame(entry: [(String, Double)]) {
     guard predictionIndicator.tag == 14 else { return }
-    guard predictions.count < 18 else {
+    guard predictions.count < 7 else {
       predictionIndicator.tag = 2
-      curatePrediction()
+      //curatePrediction()
       return
     }
     predictions.append(entry)

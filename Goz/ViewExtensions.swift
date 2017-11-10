@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 extension UIView {
   func rotateViewForOrientations(orientation: UIDeviceOrientation) {
@@ -21,3 +22,5 @@ extension UIView {
     }
   }
 }
+
+extension UIDeviceOrientation { var videoOrientation: AVCaptureVideoOrientation? { switch self { case .portrait: return .portrait case .portraitUpsideDown: return .portraitUpsideDown case .landscapeLeft: return .landscapeRight case .landscapeRight: return .landscapeLeft default: return nil } } }

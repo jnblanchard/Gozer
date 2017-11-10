@@ -31,6 +31,14 @@ extension ViewController {
       captureSession.addInput(input)
     }
 
+    if captureSession.canAddOutput(photoOutput) {
+      photoOutput.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA])], completionHandler: { (finished, anError) in
+        guard let error = anError else { return }
+        debugPrint("Failed to set photo settings with: \(error.localizedDescription)")
+      })
+      captureSession.addOutput(photoOutput)
+    }
+
     captureSession.commitConfiguration()
 
     previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -115,6 +123,50 @@ extension ViewController {
 
       device.isSubjectAreaChangeMonitoringEnabled = monitorSubjectAreaChange
       device.unlockForConfiguration()
+    } catch {
+      debugPrint(error)
+    }
+  }
+}
+
+extension ViewController: AVCapturePhotoCaptureDelegate {
+  func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+    guard let imageBuffer = photo.pixelBuffer else { return }
+    CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
+    guard let context = CGContext(data: CVPixelBufferGetBaseAddress(imageBuffer),
+                                  width: CVPixelBufferGetWidth(imageBuffer),
+                                  height: CVPixelBufferGetHeight(imageBuffer),
+                                  bitsPerComponent: 8,
+                                  bytesPerRow: CVPixelBufferGetBytesPerRow(imageBuffer),
+                                  space: CGColorSpaceCreateDeviceRGB(),
+                                  bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue
+                                    | CGBitmapInfo.byteOrder32Little.rawValue),
+      let quartzImage = context.makeImage() else { return }
+    CVPixelBufferUnlockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
+
+    var frameImage = UIImage(cgImage: quartzImage, scale: 1, orientation: UIImageOrientation.up)
+
+    guard let connection = output.connection(with: .video) else { return }
+    if connection.videoOrientation == .landscapeLeft {
+      frameImage = frameImage.imageRotatedBy(degrees: 0, flipX: true, flipY: false) ?? frameImage
+    } else if connection.videoOrientation == .portrait {
+      frameImage = frameImage.imageRotatedBy(degrees: 90, flipX: false, flipY: true) ?? frameImage
+    } else if connection.videoOrientation == .landscapeLeft {
+      frameImage = frameImage.imageRotatedBy(degrees: 90, flipX: false, flipY: false) ?? frameImage
+    }
+
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: 300, height: 400), false, 0.0)
+    frameImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 400)))
+
+    let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
+    UIGraphicsEndImageContext()
+
+    guard let scaledBuffer = scaledImage.toBuffer() else { return }
+    do {
+      let prediction = try model.prediction(data: scaledBuffer)
+      predictionPlacement = orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)
+      predictionImage = frameImage
+      DispatchQueue.main.async { self.performSegue(withIdentifier: "inference", sender: self) }
     } catch {
       debugPrint(error)
     }

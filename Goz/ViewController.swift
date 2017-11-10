@@ -24,6 +24,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                                        autoreleaseFrequency: .workItem)
 
   let captureSession = AVCaptureSession()
+  let photoOutput = AVCapturePhotoOutput()
   let output = AVCaptureVideoDataOutput()
 
   var lastOrientation: UIDeviceOrientation = .portrait
@@ -41,6 +42,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
 
   var predictions: [[(String, Double)]] = [[]]
+  var predictionImage: UIImage?
   var predictionPlacement: [(String, Double)?] = []
   var picking: Bool = false
 
@@ -120,10 +122,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   }
 
   @IBAction func predictionPugTapped(_ sender: Any) {
+    let connection = photoOutput.connection(with: AVMediaType.video)
+    guard let vOr = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue) else { return }
+    connection?.videoOrientation = vOr
+    photoOutput.capturePhoto(with: AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]), delegate: self)
+    /* Prediction curation 11/10/17
     guard predictionIndicator.tag != 14 else { return }
     predictionIndicator.startAnimating()
     predictions.removeAll()
     predictionIndicator.tag = 14
+    */
   }
 
   @objc func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
@@ -142,6 +150,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let ivc = segue.destination as? InferenceViewController else { return }
     ivc.placementData = predictionPlacement
+    ivc.frame = predictionImage
     predictionPlacement.removeAll()
   }
 

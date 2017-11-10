@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+let oreo = UIDevice.current.orientation
+
+var numInferences: Int {
+  return UserDefaults.standard.object(forKey: "numInferences") != nil ? UserDefaults.standard.integer(forKey: "numInferences") : 5
+}
+
 extension UIViewController {
   func orderedFirstNInferences(n: Int, dict: [String : Double]) -> [(String, Double)] {
     var topTups: [(String,Double)] = []
@@ -24,10 +30,6 @@ extension UIViewController {
   }
 
   func present(inferences: [(String, Double)]) {
-
-
-
-
     var i = 0
     let inference = inferences.map { (place) -> String in
       i+=1
@@ -47,6 +49,7 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
     guard !picking else { return }
     picking = true
     let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+    DispatchQueue.main.async { self.predictionImage = chosenImage }
     UIGraphicsBeginImageContextWithOptions(CGSize(width: 300, height: 400), false, 0.0)
     chosenImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 400)))
 
@@ -58,7 +61,7 @@ extension ViewController: UINavigationControllerDelegate, UIImagePickerControlle
     guard let prediction = try? self.model.prediction(data: dogImg) else { return }
     DispatchQueue.main.async {
       self.dismiss(animated: true) {
-        self.predictionPlacement = self.orderedFirstNInferences(n: 3, dict: prediction.breedProbability)
+        self.predictionPlacement = self.orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)
         self.performSegue(withIdentifier: "inference", sender: self)
         self.picking = false
       }
