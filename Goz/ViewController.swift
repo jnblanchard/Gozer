@@ -34,8 +34,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
   @IBOutlet var predictionIndicator: UIActivityIndicatorView!
   @IBOutlet var cameraParentView: UIView!
-  @IBOutlet var cameraImageViews: [UIImageView]!
-  
+  @IBOutlet var cameraBarCollection: [UIView]!
+
   var previewLayer: AVCaptureVideoPreviewLayer?
 
   override var prefersStatusBarHidden: Bool { return true }
@@ -87,33 +87,43 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     lastOrientation = orientation
 
     UIView.animate(withDuration: 0.4) {
-      for imageView in self.cameraImageViews { imageView.rotateViewForOrientations(orientation: orientation) }
+      for view in self.cameraBarCollection {
+        guard view.tag != 7 else { continue }
+        view.rotateViewForOrientations(orientation: orientation)
+      }
     }
 
     insightController?.orientation = orientation
   }
 
-  @IBAction func torchTapped(_ sender: Any) {
+  @IBAction func torchSwitch(_ sender: Any) {
     guard let device = backDevice else { return }
     do {
       try device.lockForConfiguration()
       let torchSwitch = device.torchMode == .on
       device.torchMode = torchSwitch ? .off : .on
-      guard let imageView = cameraImageViews.first(where: { (temp) -> Bool in
+      guard let parentView = cameraBarCollection.first(where: { (temp) -> Bool in
         return temp.tag == 5
       }) else { return }
+      var label: TorchLabel? {
+        guard let temp = parentView.subviews.first(where: { (aView) -> Bool in
+          return aView is TorchLabel
+        }) else { return nil }
+        return temp as? TorchLabel
+      }
+      guard let torchLabel = label else { return }
       if device.torchMode == .on {
         try device.setTorchModeOn(level: 0.7)
-        imageView.image = #imageLiteral(resourceName: "candleOn")
+        torchLabel.on = false
       } else {
-        imageView.image = #imageLiteral(resourceName: "candleOff")
+        torchLabel.on = true
       }
     } catch {
       debugPrint(error)
     }
   }
 
-  @IBAction func uploadTapped(_ sender: Any) {
+  @IBAction func upload(_ sender: Any) {
     let picker = UIImagePickerController()
     picker.allowsEditing = false
     picker.delegate = self

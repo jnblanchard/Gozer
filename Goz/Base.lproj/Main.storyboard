@@ -51,30 +51,130 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pcH-9T-PGD">
                                                 <rect key="frame" x="0.0" y="10" width="375" height="55"/>
                                                 <subviews>
-                                                    <imageView tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="candleOff" translatesAutoresizingMaskIntoConstraints="NO" id="oBY-DG-odE">
+                                                    <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ism-jY-MIq">
                                                         <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
+                                                        <subviews>
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="headTruncation" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54a-H6-9Z6" customClass="TorchLabel" customModule="Goz" customModuleProvider="target">
+                                                                <rect key="frame" x="40" y="8.5" width="46" height="39"/>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="Torch">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" size="16" name="Futura-Bold"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                    <fragment>
+                                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" size="21" name="Futura-Bold"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                    <fragment content="On">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" size="14" name="Futura-Medium"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="on" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJv-9o-WgQ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
+                                                                <connections>
+                                                                    <action selector="torchSwitch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4R1-Dy-MVF"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
                                                         <gestureRecognizers/>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="CGN-i1-2yc" appends="YES" id="LzO-t7-6cw"/>
-                                                        </connections>
-                                                    </imageView>
-                                                    <imageView alpha="0.80000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pug" translatesAutoresizingMaskIntoConstraints="NO" id="3jl-Fq-kBg">
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="OJv-9o-WgQ" secondAttribute="trailing" id="3J6-3F-Ssz"/>
+                                                            <constraint firstAttribute="bottom" secondItem="OJv-9o-WgQ" secondAttribute="bottom" id="4jL-HK-JSW"/>
+                                                            <constraint firstItem="OJv-9o-WgQ" firstAttribute="leading" secondItem="ism-jY-MIq" secondAttribute="leading" id="6Jo-pt-uyk"/>
+                                                            <constraint firstItem="54a-H6-9Z6" firstAttribute="centerX" secondItem="ism-jY-MIq" secondAttribute="centerX" id="CMe-7j-tVB"/>
+                                                            <constraint firstItem="OJv-9o-WgQ" firstAttribute="top" secondItem="ism-jY-MIq" secondAttribute="top" id="D3t-hl-vmp"/>
+                                                            <constraint firstItem="54a-H6-9Z6" firstAttribute="centerY" secondItem="ism-jY-MIq" secondAttribute="centerY" id="gFw-kh-4eM"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wCt-JW-5uE">
                                                         <rect key="frame" x="125" y="0.0" width="125" height="55"/>
-                                                        <gestureRecognizers/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear256x256" translatesAutoresizingMaskIntoConstraints="NO" id="iuX-Nq-0QA">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="iuX-Nq-0QA" secondAttribute="bottom" id="52a-Cl-6DN"/>
+                                                            <constraint firstAttribute="trailing" secondItem="iuX-Nq-0QA" secondAttribute="trailing" id="Gaf-TF-0Br"/>
+                                                            <constraint firstItem="iuX-Nq-0QA" firstAttribute="top" secondItem="wCt-JW-5uE" secondAttribute="top" id="Uz3-gI-L1M"/>
+                                                            <constraint firstItem="iuX-Nq-0QA" firstAttribute="leading" secondItem="wCt-JW-5uE" secondAttribute="leading" id="h0g-QY-SDh"/>
+                                                        </constraints>
                                                         <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="nqv-z7-3LL" appends="YES" id="LZf-1I-3Uv"/>
+                                                            <outletCollection property="gestureRecognizers" destination="nqv-z7-3LL" appends="YES" id="jbI-6q-FJ7"/>
                                                         </connections>
-                                                    </imageView>
-                                                    <imageView alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iosphotos" translatesAutoresizingMaskIntoConstraints="NO" id="3oJ-BL-m3m">
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THu-M4-5ri">
                                                         <rect key="frame" x="250" y="0.0" width="125" height="55"/>
+                                                        <subviews>
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="headTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kB3-RX-Ozd">
+                                                                <rect key="frame" x="33.5" y="8.5" width="58" height="38"/>
+                                                                <attributedString key="attributedText">
+                                                                    <fragment content="Import">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" size="16" name="Futura-Bold"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                    <fragment>
+                                                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" size="21" name="Futura-Bold"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                    <fragment content="From Photos">
+                                                                        <attributes>
+                                                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <font key="NSFont" size="14" name="Futura-CondensedMedium"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JA3-0J-FRy">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
+                                                                <connections>
+                                                                    <action selector="upload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zy8-VC-CAQ"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
                                                         <gestureRecognizers/>
-                                                        <connections>
-                                                            <outletCollection property="gestureRecognizers" destination="rsP-fW-ybe" appends="YES" id="w5N-qo-ubZ"/>
-                                                        </connections>
-                                                    </imageView>
+                                                        <constraints>
+                                                            <constraint firstItem="JA3-0J-FRy" firstAttribute="top" secondItem="THu-M4-5ri" secondAttribute="top" id="2zU-Xm-rW3"/>
+                                                            <constraint firstItem="kB3-RX-Ozd" firstAttribute="centerX" secondItem="THu-M4-5ri" secondAttribute="centerX" id="5rO-DP-egE"/>
+                                                            <constraint firstAttribute="bottom" secondItem="JA3-0J-FRy" secondAttribute="bottom" id="Zkt-5o-KFe"/>
+                                                            <constraint firstItem="JA3-0J-FRy" firstAttribute="leading" secondItem="THu-M4-5ri" secondAttribute="leading" id="bgs-ww-HuP"/>
+                                                            <constraint firstAttribute="trailing" secondItem="JA3-0J-FRy" secondAttribute="trailing" id="lNG-WD-sfS"/>
+                                                            <constraint firstItem="kB3-RX-Ozd" firstAttribute="centerY" secondItem="THu-M4-5ri" secondAttribute="centerY" id="uJA-7f-ZVU"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="pcH-9T-PGD" secondAttribute="bottom" constant="5" id="JOP-Fr-sGH"/>
                                             <constraint firstAttribute="height" constant="70" id="fOd-Pl-tSf"/>
@@ -84,7 +184,7 @@
                                         </constraints>
                                     </view>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5UP-lG-AKs">
-                                        <rect key="frame" x="168.5" y="555" width="37" height="37"/>
+                                        <rect key="frame" x="169" y="535" width="37" height="37"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
@@ -103,9 +203,9 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="DcR-kq-adm" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" id="1kN-Jc-0EL"/>
-                                    <constraint firstItem="5UP-lG-AKs" firstAttribute="centerX" secondItem="3jl-Fq-kBg" secondAttribute="centerX" id="ETD-Lm-B7t"/>
                                     <constraint firstAttribute="trailing" secondItem="DcR-kq-adm" secondAttribute="trailing" id="EYT-Rv-GUb"/>
-                                    <constraint firstItem="DcR-kq-adm" firstAttribute="top" secondItem="5UP-lG-AKs" secondAttribute="bottom" constant="5" id="LWP-be-ry3"/>
+                                    <constraint firstItem="5UP-lG-AKs" firstAttribute="centerX" secondItem="wCt-JW-5uE" secondAttribute="centerX" id="G0i-X8-K5N"/>
+                                    <constraint firstItem="DcR-kq-adm" firstAttribute="top" secondItem="5UP-lG-AKs" secondAttribute="bottom" constant="25" id="LWP-be-ry3"/>
                                     <constraint firstItem="g6h-8m-JSe" firstAttribute="top" secondItem="taQ-nn-FaB" secondAttribute="top" id="jxU-vF-UZM"/>
                                     <constraint firstItem="g6h-8m-JSe" firstAttribute="leading" secondItem="taQ-nn-FaB" secondAttribute="leading" id="lYE-fA-eS0"/>
                                     <constraint firstAttribute="trailing" secondItem="g6h-8m-JSe" secondAttribute="trailing" id="soN-un-u08"/>
@@ -125,23 +225,13 @@
                     <connections>
                         <outlet property="cameraParentView" destination="taQ-nn-FaB" id="wOp-Lc-3QO"/>
                         <outlet property="predictionIndicator" destination="5UP-lG-AKs" id="HJo-vJ-geb"/>
-                        <outletCollection property="cameraImageViews" destination="oBY-DG-odE" collectionClass="NSMutableArray" id="SLY-aK-cZ6"/>
-                        <outletCollection property="cameraImageViews" destination="3oJ-BL-m3m" collectionClass="NSMutableArray" id="cm1-AV-osW"/>
-                        <outletCollection property="cameraImageViews" destination="3jl-Fq-kBg" collectionClass="NSMutableArray" id="Mje-zN-GDE"/>
+                        <outletCollection property="cameraBarCollection" destination="ism-jY-MIq" collectionClass="NSMutableArray" id="DbK-4T-tSY"/>
+                        <outletCollection property="cameraBarCollection" destination="wCt-JW-5uE" collectionClass="NSMutableArray" id="2y3-m4-KLM"/>
+                        <outletCollection property="cameraBarCollection" destination="THu-M4-5ri" collectionClass="NSMutableArray" id="j5f-NQ-xdk"/>
                         <segue destination="NgC-IF-jZ8" kind="presentation" identifier="inference" modalTransitionStyle="coverVertical" id="4kV-tC-BXG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="CGN-i1-2yc">
-                    <connections>
-                        <action selector="torchTapped:" destination="BYZ-38-t0r" id="ON9-9B-wwH"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="rsP-fW-ybe">
-                    <connections>
-                        <action selector="uploadTapped:" destination="BYZ-38-t0r" id="aaA-bc-RiA"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="nqv-z7-3LL">
                     <connections>
                         <action selector="predictionPugTapped:" destination="BYZ-38-t0r" id="4jV-JT-QFb"/>
@@ -224,21 +314,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGv-EH-Pb1">
-                                <rect key="frame" x="123" y="554" width="128" height="128"/>
-                                <state key="normal" image="pug"/>
+                                <rect key="frame" x="144.5" y="582" width="85" height="85"/>
+                                <state key="normal" image="clear256x256"/>
                                 <connections>
                                     <action selector="dismissTapped:" destination="NgC-IF-jZ8" eventType="touchUpInside" id="UTn-Cu-Ozh"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IX6-3T-TIn">
-                                <rect key="frame" x="16" y="93" width="343" height="461"/>
+                                <rect key="frame" x="16" y="93" width="343" height="489"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dCC-JK-aKQ" firstAttribute="top" secondItem="wJt-N7-Qri" secondAttribute="top" id="07Y-yi-brZ"/>
                             <constraint firstItem="IX6-3T-TIn" firstAttribute="leading" secondItem="wJt-N7-Qri" secondAttribute="leadingMargin" id="227-4x-y8O"/>
-                            <constraint firstItem="qGv-EH-Pb1" firstAttribute="bottom" secondItem="wJt-N7-Qri" secondAttribute="bottom" constant="15" id="3Go-xv-aDE"/>
+                            <constraint firstItem="qGv-EH-Pb1" firstAttribute="bottom" secondItem="wJt-N7-Qri" secondAttribute="bottom" id="3Go-xv-aDE"/>
                             <constraint firstItem="v36-5r-xau" firstAttribute="top" secondItem="dCC-JK-aKQ" secondAttribute="top" id="4GE-Pv-5qt"/>
                             <constraint firstItem="IX6-3T-TIn" firstAttribute="top" secondItem="wXb-cu-ulq" secondAttribute="bottom" constant="15" id="I19-ck-SCG"/>
                             <constraint firstItem="wXb-cu-ulq" firstAttribute="centerX" secondItem="wJt-N7-Qri" secondAttribute="centerX" id="I8f-xO-EGS"/>
@@ -268,10 +358,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="candleOff" width="170" height="170"/>
+        <image name="clear256x256" width="85" height="85"/>
         <image name="error" width="425" height="567"/>
-        <image name="iosphotos" width="170" height="170"/>
-        <image name="pug" width="128" height="128"/>
         <image name="working" width="440" height="587"/>
     </resources>
 </document>

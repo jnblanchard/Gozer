@@ -30,13 +30,10 @@ extension ViewController {
 
     switch lastOrientation {
     case .landscapeLeft:
-      debugPrint("ll")
       frameImage = frameImage.imageRotatedBy(degrees: 0, flipX: false, flipY: true) ?? frameImage
     case .landscapeRight:
-      debugPrint("lr")
       frameImage = frameImage.imageRotatedBy(degrees: 0, flipX: true, flipY: false) ?? frameImage
     default:
-      debugPrint("def")
       frameImage = frameImage.imageRotatedBy(degrees: 90, flipX: false, flipY: true) ?? frameImage
     }
 
