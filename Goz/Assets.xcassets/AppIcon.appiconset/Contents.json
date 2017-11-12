@@ -3,109 +3,109 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "clearIcon40x40.png",
+      "filename" : "Dogcropicon40x40.png",
       "scale" : "2x"
     },
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "clearIcon60x60.png",
+      "filename" : "Dogcropicon60x60.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "clearIcon58x58.png",
+      "filename" : "Dogcropicon58x58.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "clearIcon87x87.png",
+      "filename" : "Dogcropicon87x87.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "clearIcon80x80-1.png",
+      "filename" : "Dogcropicon80x80.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "clearIcon120x120.png",
+      "filename" : "Dogcropicon120x120.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "clearIcon120x120-1.png",
+      "filename" : "Dogcropicon120x120-1.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "clearIcon180x180.png",
+      "filename" : "Dogcropicon180x180.png",
       "scale" : "3x"
     },
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "clearIcon20x20.png",
+      "filename" : "Dogcropicon20x20.png",
       "scale" : "1x"
     },
     {
       "size" : "20x20",
       "idiom" : "ipad",
-      "filename" : "clearIcon40x40-1.png",
+      "filename" : "Dogcropicon40x40-1.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "clearIcon29x29-1.png",
+      "filename" : "Dogcropicon29x29.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "clearIcon58x58-1.png",
+      "filename" : "Dogcropicon58x58-1.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "clearIcon40x40-2.png",
+      "filename" : "Dogcropicon40x40-2.png",
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "clearIcon80x80.png",
+      "filename" : "Dogcropicon80x80-1.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "clearIcon76x76.png",
+      "filename" : "Dogcropicon76x76.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "clearIcon152x152.png",
+      "filename" : "Dogcropicon152x152.png",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "clearIcon167x167.png",
+      "filename" : "Dogcropicon167x167.png",
       "scale" : "2x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "clearIcon.png",
+      "filename" : "Dogcropicon.png",
       "scale" : "1x"
     }
   ],

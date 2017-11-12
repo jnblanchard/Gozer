@@ -12,11 +12,14 @@ protocol Insights { func topPredictionsFromFrame(entry: [(String, Double)]) }
 
 class InsightfulViewController: UIViewController {
 
-  @IBOutlet var labels: [UILabel]!
-
   @IBOutlet var labStackView: UIStackView!
 
   var delegate: Insights?
+
+  var insightCount: Int {
+    //return numInferences
+    return 4
+  }
 
   var orientation: UIDeviceOrientation = .portrait {
     didSet {
@@ -29,7 +32,9 @@ class InsightfulViewController: UIViewController {
         default:
           self.labStackView.axis = .vertical
         }
-        for label in self.labels { label.rotateViewForOrientations(orientation: self.orientation) }
+        for label in self.labStackView.arrangedSubviews {
+          label.rotateViewForOrientations(orientation: self.orientation)
+        }
       }
     }
   }
@@ -37,17 +42,31 @@ class InsightfulViewController: UIViewController {
   var predictions: [String : Double]? {
     didSet {
       guard let wholeDict = predictions else { return }
-      var topTups = orderedFirstNInferences(n: labels.count, dict: wholeDict)
-      for label in labels {
-        let prediction = topTups[label.tag]
-        label.text = "\(prediction.1.rounded(toPlaces: 4)*100)% \n \(prediction.0.replacingOccurrences(of: "_", with: " "))"
+      let inferences = orderedFirstNInferences(n: insightCount, dict: wholeDict)
+      for label in labStackView.arrangedSubviews {
+        guard let temp = label as? UILabel, let i = labStackView.arrangedSubviews.index(of: temp) else { continue }
+        guard i < inferences.count else { continue }
+        let prediction = inferences[i]
+        temp.text = "\(prediction.1.rounded(toPlaces: 3)*100)%, \(prediction.0.replacingOccurrences(of: "_", with: " ").capitalized)"
       }
-      delegate?.topPredictionsFromFrame(entry: topTups)
+      delegate?.topPredictionsFromFrame(entry: inferences)
     }
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    for i in 0..<insightCount {
+      let label = UILabel()
+      label.tag = i
+      label.adjustsFontSizeToFitWidth = true
+      label.minimumScaleFactor = 0.8
+      label.textAlignment = .center
+      label.font = UIFont(name: "Futura-Medium", size: 15)
+      label.autoresizingMask = .flexibleWidth
+      label.numberOfLines = 0
+      label.textColor = UIColor.white
+      labStackView.addArrangedSubview(label)
+    }
   }
 
   override func didReceiveMemoryWarning() {

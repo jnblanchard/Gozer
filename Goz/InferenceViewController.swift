@@ -22,7 +22,7 @@ class InferenceViewController: UIViewController {
         return entry != nil
       }).map { (confirmation) -> String in
         i+=1
-        return "\(confirmation!.1.rounded(toPlaces: 3)*100)%: \(confirmation!.0.replacingOccurrences(of: "_", with: " "))"
+        return "\(confirmation!.1.rounded(toPlaces: 3)*100)%, \(confirmation!.0.replacingOccurrences(of: "_", with: " ").capitalized)"
       }
       DispatchQueue.main.async {
         for placement in placements {
