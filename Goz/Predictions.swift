@@ -78,7 +78,7 @@ extension ViewController {
 
     let err = vImageScale_ARGB8888(&srcBuffer, &destBuffer, nil, 0)
     guard err == kvImageNoError else {
-      print(err)
+      debugPrint(err)
       return
     }
 
@@ -86,7 +86,7 @@ extension ViewController {
     CVPixelBufferLockBaseAddress(bufferRef!, CVPixelBufferLockFlags(rawValue: 0))
 
     guard result == kCVReturnSuccess else {
-      print(result)
+      debugPrint(result)
       return
     }
 
@@ -100,7 +100,6 @@ extension ViewController {
     guard let prediction = try? self.model.prediction(data: dogBuf) else { return }
     DispatchQueue.main.async {
 //      self.predictionLabel.text = prediction.classLabel
-      //print(prediction.breedProbability)
     }
   }
 

@@ -26,7 +26,11 @@ extension ViewController {
       captureSession.addOutput(output)
     }
 
-    guard let input = backInput else { return }
+    guard let input = backInput else {
+      configure()
+      startSession()
+      return
+    }
     if captureSession.canAddInput(input) {
       captureSession.addInput(input)
     }
@@ -46,7 +50,7 @@ extension ViewController {
     previewLayer!.frame = view.bounds
     view.layer.addSublayer(previewLayer!)
     view.bringSubview(toFront: cameraParentView)
-    DispatchQueue.main.async { self.captureSession.startRunning() }
+    captureSession.startRunning()
   }
 
   func stopSession() { DispatchQueue.main.async { self.captureSession.stopRunning() } }

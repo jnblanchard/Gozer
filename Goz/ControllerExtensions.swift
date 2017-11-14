@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+struct CameraPlatform {
+  static var isSimulator: Bool {
+    return TARGET_OS_SIMULATOR != 0
+  }
+}
+
 let oreo = UIDevice.current.orientation
 
 var numInferences: Int {

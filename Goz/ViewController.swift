@@ -48,15 +48,26 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    configure()
-    predictionIndicator.layer.borderColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.4).cgColor
-    predictionIndicator.layer.borderWidth = 1.0
-    insightController?.delegate = self
-    cameraParentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusAndExposeTap)))
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(orientationChanged),
-                                           name: NSNotification.Name.UIDeviceOrientationDidChange,
-                                           object: nil)
+    defer {
+      predictionIndicator.layer.borderColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.4).cgColor
+      predictionIndicator.layer.borderWidth = 1.0
+      insightController?.delegate = self
+      cameraParentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusAndExposeTap)))
+      NotificationCenter.default.addObserver(self,
+                                             selector: #selector(orientationChanged),
+                                             name: NSNotification.Name.UIDeviceOrientationDidChange,
+                                             object: nil)
+    }
+    guard !CameraPlatform.isSimulator else { return }
+    AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
+      if response {
+        DispatchQueue.main.async {
+          self.configure()
+        }
+      } else {
+        debugPrint("Access to camera denied.")
+      }
+    }
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +79,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     UIView.setAnimationsEnabled(false)
     UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
     UIView.setAnimationsEnabled(true)
-    startSession()
+    guard !CameraPlatform.isSimulator else { return }
+    AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
+      if response {
+        DispatchQueue.main.async {
+          self.startSession()
+        }
+      } else {
+        debugPrint("Unable to start session")
+      }
+    }
   }
 
   override func viewDidDisappear(_ animated: Bool) {
