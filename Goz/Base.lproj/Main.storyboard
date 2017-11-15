@@ -243,7 +243,7 @@ Cg
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-24.800000000000001" y="31.934032983508249"/>
+            <point key="canvasLocation" x="-23" y="33"/>
         </scene>
         <!--Insightful View Controller-->
         <scene sceneID="hF5-RY-RrS">
@@ -272,7 +272,7 @@ Cg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TI4-ij-onK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23" y="579"/>
+            <point key="canvasLocation" x="-22" y="552"/>
         </scene>
         <!--Inference View Controller-->
         <scene sceneID="xrG-Fw-NfY">
@@ -282,7 +282,7 @@ Cg
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear256x256" translatesAutoresizingMaskIntoConstraints="NO" id="dCC-JK-aKQ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear256x256" translatesAutoresizingMaskIntoConstraints="NO" id="dCC-JK-aKQ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v36-5r-xau">

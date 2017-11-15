@@ -176,15 +176,15 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
       frameImage = frameImage.imageRotatedBy(degrees: 90, flipX: false, flipY: false) ?? frameImage
     }
 
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: 300, height: 400), false, 0.0)
-    frameImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 400)))
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: 350, height: 350), false, 0.0)
+    frameImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 350, height: 350)))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
 
     guard let scaledBuffer = scaledImage.toBuffer() else { return }
     do {
-      let prediction = try GozerModel.shared.model.prediction(data: scaledBuffer)
+      let prediction = try GozAlmostuge().prediction(image: scaledBuffer)
       predictionPlacement = orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)
       predictionImage = frameImage
       DispatchQueue.main.async { self.performSegue(withIdentifier: "inference", sender: self) }

@@ -11,14 +11,9 @@ import UIKit
 import AVFoundation
 import Accelerate
 
-class GozerModel: NSObject {
-  static var shared = GozerModel()
-  let model = AdultGoz()
-}
-
 extension Camera {
   func poorPredict(using sample: CMSampleBuffer, connection: AVCaptureConnection) {
-    //image size 400x300
+    //image size 350x350
     guard let delegate = presenter else { return }
     guard let imageBuffer = CMSampleBufferGetImageBuffer(sample) else { return }
     CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
@@ -43,16 +38,16 @@ extension Camera {
       frameImage = frameImage.imageRotatedBy(degrees: 90, flipX: false, flipY: true) ?? frameImage
     }
 
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: 300, height: 400), false, 0.0)
-    //frameImage.draw(in: CGRect(x: 0, y: 0, width: 300, height: 400))
-    frameImage.draw(in: aspectFitFrame(destSize: CGSize(width: 300, height: 400), srcSize: frameImage.size))
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: 350, height: 350), false, 0.0)
+    //frameImage.draw(in: CGRect(x: 0, y: 0, width: 350, height: 400))
+    frameImage.draw(in: aspectFitFrame(destSize: CGSize(width: 350, height: 350), srcSize: frameImage.size))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
 
     guard let dogFrame = scaledImage.toBuffer() else { return }
 
-    guard let prediction = try? gozer.model.prediction(data: dogFrame) else { return }
+    guard let prediction = try? GozAlmostuge().prediction(image: dogFrame) else { return }
     DispatchQueue.main.async {
       self.insight?.show(breedProb: prediction.breedProbability)
     }

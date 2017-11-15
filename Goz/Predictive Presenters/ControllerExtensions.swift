@@ -72,15 +72,15 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
     picking = true
     let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
     DispatchQueue.main.async { self.predictionImage = chosenImage }
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: 300, height: 400), false, 0.0)
-    chosenImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 300, height: 400)))
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: 350, height: 350), false, 0.0)
+    chosenImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 350, height: 350)))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
 
     guard let dogImg = scaledImage.toBuffer() else { return }
 
-    guard let prediction = try? GozerModel.shared.model.prediction(data: dogImg) else { return }
+    guard let prediction = try? GozAlmostuge().prediction(image: dogImg) else { return }
     DispatchQueue.main.async {
       self.dismiss(animated: true) {
         self.predictionPlacement = self.orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)

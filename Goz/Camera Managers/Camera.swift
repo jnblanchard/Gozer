@@ -16,8 +16,6 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     return Camera()
   }
 
-  let gozer = GozerModel.shared
-
   let deviceQueue = DispatchQueue(label: "Device", autoreleaseFrequency: .workItem)
   let videoBufferQueue = DispatchQueue(label: "Output", autoreleaseFrequency: .workItem)
 
