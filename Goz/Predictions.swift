@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 import Accelerate
 
-extension ViewController {
+extension CameraViewController {
   func poorPredict(using sample: CMSampleBuffer, connection: AVCaptureConnection) {
     //image size 400x300
     guard let imageBuffer = CMSampleBufferGetImageBuffer(sample) else { return }
@@ -91,13 +91,13 @@ extension ViewController {
     }
 
     guard let dogBuf = bufferRef else { return }
-    let dogImg = UIImage(ciImage: CIImage(cvPixelBuffer: dogBuf))
+    let _ = UIImage(ciImage: CIImage(cvPixelBuffer: dogBuf))
     DispatchQueue.main.async {
 //      self.predictionImageView.image = dogImg
 //      self.predictionImageView.backgroundColor = UIColor.yellow
     }
 
-    guard let prediction = try? self.model.prediction(data: dogBuf) else { return }
+    guard let _ = try? self.model.prediction(data: dogBuf) else { return }
     DispatchQueue.main.async {
 //      self.predictionLabel.text = prediction.classLabel
     }
@@ -124,7 +124,7 @@ extension ViewController {
   }
 }
 
-extension ViewController: Insights {
+extension CameraViewController: Insights {
   struct prediction { var name = ""; var confidence = 0.0 }
 
   func consensus(on place: Int) -> (String, Double)? {

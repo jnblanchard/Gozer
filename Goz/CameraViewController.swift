@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Accelerate
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
   let model = AdultGoz()
 
@@ -20,6 +20,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }) as? InsightfulViewController
   }
 
+  let deviceQueue = DispatchQueue(label: "Device", autoreleaseFrequency: .workItem)
   let videoBufferQueue = DispatchQueue(label: "Output",
                                        autoreleaseFrequency: .workItem)
 
@@ -61,9 +62,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     guard !CameraPlatform.isSimulator else { return }
     AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
       if response {
-        DispatchQueue.main.async {
-          self.configure()
-        }
+        self.configure()
       } else {
         debugPrint("Access to camera denied.")
       }

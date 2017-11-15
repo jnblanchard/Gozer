@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-extension ViewController {
+extension CameraViewController {
   func startSession() {
     captureSession.beginConfiguration()
 
@@ -47,13 +47,25 @@ extension ViewController {
 
     previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
     previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
-    previewLayer!.frame = view.bounds
-    view.layer.addSublayer(previewLayer!)
-    view.bringSubview(toFront: cameraParentView)
-    captureSession.startRunning()
+
+    DispatchQueue.main.async {
+      self.previewLayer!.frame = self.view.bounds
+      self.view.layer.addSublayer(self.previewLayer!)
+      self.view.bringSubview(toFront: self.cameraParentView)
+    }
+    
+    deviceQueue.async {
+      guard !self.captureSession.isRunning else { return }
+      self.captureSession.startRunning()
+    }
   }
 
-  func stopSession() { DispatchQueue.main.async { self.captureSession.stopRunning() } }
+  func stopSession() {
+    deviceQueue.async {
+      guard self.captureSession.isRunning else { return }
+      self.captureSession.stopRunning()
+    }
+  }
 
   func configure() {
     backDevice = AVCaptureDevice.DiscoverySession.init(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back).devices.first
@@ -133,7 +145,7 @@ extension ViewController {
   }
 }
 
-extension ViewController: AVCapturePhotoCaptureDelegate {
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
   func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
     guard let imageBuffer = photo.pixelBuffer else { return }
     CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))

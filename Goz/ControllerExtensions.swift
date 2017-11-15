@@ -50,7 +50,7 @@ extension UIViewController {
   }
 }
 
-extension ViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+extension CameraViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     guard !picking else { return }
     picking = true

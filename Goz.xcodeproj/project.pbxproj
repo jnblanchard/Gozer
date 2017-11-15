@@ -10,7 +10,7 @@
 		AC042CF11FB29FE400B7A752 /* InsightfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */; };
 		AC2F4F3A1FB785E1004862CA /* TorchLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F4F391FB785E1004862CA /* TorchLabel.swift */; };
 		AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */; };
-		AC3C89CD1FB14D52008D47FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89CC1FB14D52008D47FD /* ViewController.swift */; };
+		AC3C89CD1FB14D52008D47FD /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89CC1FB14D52008D47FD /* CameraViewController.swift */; };
 		AC3C89D01FB14D52008D47FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3C89CE1FB14D52008D47FD /* Main.storyboard */; };
 		AC3C89D21FB14D52008D47FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC3C89D11FB14D52008D47FD /* Assets.xcassets */; };
 		AC3C89D51FB14D52008D47FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3C89D31FB14D52008D47FD /* LaunchScreen.storyboard */; };
@@ -47,7 +47,7 @@
 		AC2F4F391FB785E1004862CA /* TorchLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorchLabel.swift; sourceTree = "<group>"; };
 		AC3C89C71FB14D52008D47FD /* Goz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC3C89CC1FB14D52008D47FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC3C89CC1FB14D52008D47FD /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		AC3C89CF1FB14D52008D47FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC3C89D11FB14D52008D47FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC3C89D41FB14D52008D47FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */,
-				AC3C89CC1FB14D52008D47FD /* ViewController.swift */,
+				AC3C89CC1FB14D52008D47FD /* CameraViewController.swift */,
 				AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */,
 				AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */,
 				ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */,
@@ -287,7 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC9E37EB1FB4D82900B60AF0 /* ControllerExtensions.swift in Sources */,
-				AC3C89CD1FB14D52008D47FD /* ViewController.swift in Sources */,
+				AC3C89CD1FB14D52008D47FD /* CameraViewController.swift in Sources */,
 				ACAEE98E1FB3970F00EA105A /* AdultGoz.mlmodel in Sources */,
 				AC9E37E91FB4D21A00B60AF0 /* ViewExtensions.swift in Sources */,
 				AC8C1C6D1FB25A12005C6C5C /* CameraExtensions.swift in Sources */,
@@ -471,6 +471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JNB.Gozer.theDestroyer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.1;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -487,6 +488,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JNB.Gozer.theDestroyer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.1;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
