@@ -23,6 +23,7 @@
 		AC9E37EB1FB4D82900B60AF0 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */; };
 		ACAEE98E1FB3970F00EA105A /* AdultGoz.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ACAEE98D1FB3970F00EA105A /* AdultGoz.mlmodel */; };
 		ACC421E91FB51F34002B94F0 /* InferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */; };
+		ACCC0A391FBC0637003DAAB9 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC0A381FBC0637003DAAB9 /* Camera.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 		ACAEE98D1FB3970F00EA105A /* AdultGoz.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = AdultGoz.mlmodel; sourceTree = "<group>"; };
 		ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceViewController.swift; sourceTree = "<group>"; };
+		ACCC0A381FBC0637003DAAB9 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC3249F51FBC9F1900796899 /* Camera Managers */ = {
+			isa = PBXGroup;
+			children = (
+				ACCC0A381FBC0637003DAAB9 /* Camera.swift */,
+				AC8C1C6C1FB25A12005C6C5C /* CameraExtensions.swift */,
+				AC8C1C6E1FB25B27005C6C5C /* Predictions.swift */,
+			);
+			path = "Camera Managers";
+			sourceTree = "<group>";
+		};
+		AC3249F61FBC9F2700796899 /* Predictive Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				AC3C89CC1FB14D52008D47FD /* CameraViewController.swift */,
+				AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */,
+				ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */,
+				AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */,
+				AC2F4F391FB785E1004862CA /* TorchLabel.swift */,
+				AC9E37E81FB4D21A00B60AF0 /* ViewExtensions.swift */,
+				AC8C1C6A1FB25020005C6C5C /* UIImageExtensions.swift */,
+			);
+			path = "Predictive Presenters";
+			sourceTree = "<group>";
+		};
 		AC3C89BE1FB14D52008D47FD = {
 			isa = PBXGroup;
 			children = (
@@ -115,17 +141,10 @@
 		AC3C89C91FB14D52008D47FD /* Goz */ = {
 			isa = PBXGroup;
 			children = (
-				AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */,
-				AC3C89CC1FB14D52008D47FD /* CameraViewController.swift */,
-				AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */,
-				AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */,
-				ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */,
-				AC8C1C6A1FB25020005C6C5C /* UIImageExtensions.swift */,
-				AC9E37E81FB4D21A00B60AF0 /* ViewExtensions.swift */,
-				AC8C1C6C1FB25A12005C6C5C /* CameraExtensions.swift */,
-				AC8C1C6E1FB25B27005C6C5C /* Predictions.swift */,
-				AC2F4F391FB785E1004862CA /* TorchLabel.swift */,
 				ACAEE98D1FB3970F00EA105A /* AdultGoz.mlmodel */,
+				AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */,
+				AC3249F61FBC9F2700796899 /* Predictive Presenters */,
+				AC3249F51FBC9F1900796899 /* Camera Managers */,
 				AC3C89CE1FB14D52008D47FD /* Main.storyboard */,
 				AC3C89D11FB14D52008D47FD /* Assets.xcassets */,
 				AC3C89D31FB14D52008D47FD /* LaunchScreen.storyboard */,
@@ -294,6 +313,7 @@
 				AC2F4F3A1FB785E1004862CA /* TorchLabel.swift in Sources */,
 				AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */,
 				ACC421E91FB51F34002B94F0 /* InferenceViewController.swift in Sources */,
+				ACCC0A391FBC0637003DAAB9 /* Camera.swift in Sources */,
 				AC042CF11FB29FE400B7A752 /* InsightfulViewController.swift in Sources */,
 				AC8C1C6F1FB25B27005C6C5C /* Predictions.swift in Sources */,
 				AC8C1C6B1FB25020005C6C5C /* UIImageExtensions.swift in Sources */,

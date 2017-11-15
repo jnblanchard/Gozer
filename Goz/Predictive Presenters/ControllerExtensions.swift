@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 struct CameraPlatform {
   static var isSimulator: Bool {
@@ -19,6 +20,21 @@ let oreo = UIDevice.current.orientation
 
 var numInferences: Int {
   return UserDefaults.standard.object(forKey: "numInferences") != nil ? UserDefaults.standard.integer(forKey: "numInferences") : 5
+}
+
+extension CameraViewController: CameraPresenter {
+  func present(session: AVCaptureSession) {
+    previewLayer = AVCaptureVideoPreviewLayer(session: session)
+    previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+    previewLayer!.frame = view.bounds
+    view.layer.addSublayer(previewLayer!)
+    view.bringSubview(toFront: cameraParentView)
+    camera?.begin()
+  }
+
+  func lastOrientation() -> UIDeviceOrientation {
+    return prevOr
+  }
 }
 
 extension UIViewController {
@@ -64,7 +80,7 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
 
     guard let dogImg = scaledImage.toBuffer() else { return }
 
-    guard let prediction = try? self.model.prediction(data: dogImg) else { return }
+    guard let prediction = try? GozerModel.shared.model.prediction(data: dogImg) else { return }
     DispatchQueue.main.async {
       self.dismiss(animated: true) {
         self.predictionPlacement = self.orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)

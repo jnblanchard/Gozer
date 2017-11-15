@@ -10,9 +10,9 @@ import UIKit
 import AVFoundation
 import Accelerate
 
-class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class CameraViewController: UIViewController {
 
-  let model = AdultGoz()
+  let camera = Camera.shared
 
   var insightController: InsightfulViewController? {
     return childViewControllers.first(where: { (vc) -> Bool in
@@ -20,18 +20,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }) as? InsightfulViewController
   }
 
-  let deviceQueue = DispatchQueue(label: "Device", autoreleaseFrequency: .workItem)
-  let videoBufferQueue = DispatchQueue(label: "Output",
-                                       autoreleaseFrequency: .workItem)
-
-  let captureSession = AVCaptureSession()
-  let photoOutput = AVCapturePhotoOutput()
-  let output = AVCaptureVideoDataOutput()
-
-  var lastOrientation: UIDeviceOrientation = .portrait
-
-  var backDevice: AVCaptureDevice?
-  var backInput: AVCaptureInput?
+  var prevOr: UIDeviceOrientation = .portrait
 
   @IBOutlet var predictionIndicator: UIActivityIndicatorView!
   @IBOutlet var cameraParentView: UIView!
@@ -49,24 +38,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    defer {
-      predictionIndicator.layer.borderColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.4).cgColor
-      predictionIndicator.layer.borderWidth = 1.0
-      insightController?.delegate = self
-      cameraParentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusAndExposeTap)))
-      NotificationCenter.default.addObserver(self,
-                                             selector: #selector(orientationChanged),
-                                             name: NSNotification.Name.UIDeviceOrientationDidChange,
-                                             object: nil)
-    }
-    guard !CameraPlatform.isSimulator else { return }
-    AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
-      if response {
-        self.configure()
-      } else {
-        debugPrint("Access to camera denied.")
-      }
-    }
+    predictionIndicator.layer.borderColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.4).cgColor
+    predictionIndicator.layer.borderWidth = 1.0
+    insightController?.delegate = self
+    cameraParentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusAndExposeTap)))
+    NotificationCenter.default.addObserver(self,
+                                           selector: #selector(orientationChanged),
+                                           name: NSNotification.Name.UIDeviceOrientationDidChange,
+                                           object: nil)
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -79,20 +58,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
     UIView.setAnimationsEnabled(true)
     guard !CameraPlatform.isSimulator else { return }
-    AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
-      if response {
-        DispatchQueue.main.async {
-          self.startSession()
-        }
-      } else {
-        debugPrint("Unable to start session")
-      }
-    }
+    camera?.insight = insightController
+    camera?.presenter = self
+    camera?.startSession()
   }
 
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    stopSession()
+    camera?.stopSession()
   }
 
   @objc func orientationChanged(notification: Notification) {
@@ -102,8 +75,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     let orientation = newOrientation ?? UIDevice.current.orientation
 
     guard orientation == .portrait || orientation == .landscapeLeft || orientation == .landscapeRight else { return }
-    guard orientation != lastOrientation else { return }
-    lastOrientation = orientation
+    guard orientation != prevOr else { return }
+    prevOr = orientation
 
     UIView.animate(withDuration: 0.4) {
       for view in self.cameraBarCollection {
@@ -116,7 +89,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
   }
 
   @IBAction func torchSwitch(_ sender: Any) {
-    guard let device = backDevice else { return }
+    guard let device = camera?.backDevice else { return }
     do {
       try device.lockForConfiguration()
       let torchSwitch = device.torchMode == .on
@@ -151,10 +124,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
   }
 
   @IBAction func predictionPugTapped(_ sender: Any) {
-    let connection = photoOutput.connection(with: AVMediaType.video)
+    let connection = camera?.photoOutput.connection(with: AVMediaType.video)
     guard let vOr = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue) else { return }
     connection?.videoOrientation = vOr
-    photoOutput.capturePhoto(with: AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]), delegate: self)
+    camera?.photoOutput.capturePhoto(with: AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]), delegate: self)
     /* Prediction curation 11/10/17
     guard predictionIndicator.tag != 14 else { return }
     predictionIndicator.startAnimating()
@@ -165,15 +138,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
   @objc func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
     guard let devicePoint = previewLayer?.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view)) else { return }
-    focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
-  }
-
-  func captureOutput(_ captureOutput: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    //debugPrint("dropped video output")
-  }
-
-  func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    poorPredict(using: sampleBuffer, connection: connection)
+    camera?.focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -10,7 +10,24 @@ import Foundation
 import UIKit
 import AVFoundation
 
-extension CameraViewController {
+protocol CameraPresenter {
+  func lastOrientation() -> UIDeviceOrientation
+  func present(session: AVCaptureSession)
+}
+
+protocol InsightPresenter {
+  func show(breedProb: [String : Double]?)
+}
+
+extension Camera {
+
+  func begin() {
+    guard !captureSession.isRunning else { return }
+    deviceQueue.async {
+      self.captureSession.startRunning()
+    }
+  }
+
   func startSession() {
     captureSession.beginConfiguration()
 
@@ -45,19 +62,7 @@ extension CameraViewController {
 
     captureSession.commitConfiguration()
 
-    previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-    previewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
-
-    DispatchQueue.main.async {
-      self.previewLayer!.frame = self.view.bounds
-      self.view.layer.addSublayer(self.previewLayer!)
-      self.view.bringSubview(toFront: self.cameraParentView)
-    }
-    
-    deviceQueue.async {
-      guard !self.captureSession.isRunning else { return }
-      self.captureSession.startRunning()
-    }
+    presenter?.present(session: captureSession)
   }
 
   func stopSession() {
@@ -179,7 +184,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
 
     guard let scaledBuffer = scaledImage.toBuffer() else { return }
     do {
-      let prediction = try model.prediction(data: scaledBuffer)
+      let prediction = try GozerModel.shared.model.prediction(data: scaledBuffer)
       predictionPlacement = orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)
       predictionImage = frameImage
       DispatchQueue.main.async { self.performSegue(withIdentifier: "inference", sender: self) }

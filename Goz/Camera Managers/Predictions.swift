@@ -11,9 +11,15 @@ import UIKit
 import AVFoundation
 import Accelerate
 
-extension CameraViewController {
+class GozerModel: NSObject {
+  static var shared = GozerModel()
+  let model = AdultGoz()
+}
+
+extension Camera {
   func poorPredict(using sample: CMSampleBuffer, connection: AVCaptureConnection) {
     //image size 400x300
+    guard let delegate = presenter else { return }
     guard let imageBuffer = CMSampleBufferGetImageBuffer(sample) else { return }
     CVPixelBufferLockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
     guard let context = CGContext(data: CVPixelBufferGetBaseAddress(imageBuffer),
@@ -28,7 +34,7 @@ extension CameraViewController {
     CVPixelBufferUnlockBaseAddress(imageBuffer, CVPixelBufferLockFlags(rawValue: CVOptionFlags(0)))
     var frameImage = UIImage(cgImage: quartzImage, scale: 1, orientation: UIImageOrientation.up)
 
-    switch lastOrientation {
+    switch delegate.lastOrientation() {
     case .landscapeLeft:
       frameImage = frameImage.imageRotatedBy(degrees: 0, flipX: false, flipY: true) ?? frameImage
     case .landscapeRight:
@@ -46,9 +52,9 @@ extension CameraViewController {
 
     guard let dogFrame = scaledImage.toBuffer() else { return }
 
-    guard let prediction = try? self.model.prediction(data: dogFrame) else { return }
+    guard let prediction = try? gozer.model.prediction(data: dogFrame) else { return }
     DispatchQueue.main.async {
-      self.insightController?.predictions = prediction.breedProbability
+      self.insight?.show(breedProb: prediction.breedProbability)
     }
   }
 
@@ -97,7 +103,7 @@ extension CameraViewController {
 //      self.predictionImageView.backgroundColor = UIColor.yellow
     }
 
-    guard let _ = try? self.model.prediction(data: dogBuf) else { return }
+    //guard let _ = try? self.model.prediction(data: dogBuf) else { return }
     DispatchQueue.main.async {
 //      self.predictionLabel.text = prediction.classLabel
     }

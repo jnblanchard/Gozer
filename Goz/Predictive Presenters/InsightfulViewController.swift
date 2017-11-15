@@ -8,8 +8,6 @@
 
 import UIKit
 
-protocol Insights { func topPredictionsFromFrame(entry: [(String, Double)]) }
-
 class InsightfulViewController: UIViewController {
 
   @IBOutlet var labStackView: UIStackView!
@@ -67,9 +65,18 @@ class InsightfulViewController: UIViewController {
       label.textColor = UIColor.white
       labStackView.addArrangedSubview(label)
     }
+    view.layoutIfNeeded()
   }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
+  }
+}
+
+protocol Insights { func topPredictionsFromFrame(entry: [(String, Double)]) }
+
+extension InsightfulViewController: InsightPresenter {
+  func show(breedProb: [String : Double]?) {
+    predictions = breedProb
   }
 }
