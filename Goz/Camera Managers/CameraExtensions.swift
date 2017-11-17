@@ -28,9 +28,10 @@ extension Camera {
     }
   }
 
-  func startSession() {
+  func startSession(delly: CameraPresenter, sights: InsightPresenter) {
+    presenter = delly
+    insight = sights
     captureSession.beginConfiguration()
-
     if let inputs = captureSession.inputs as? [AVCaptureDeviceInput] {
       for input in inputs {
         captureSession.removeInput(input)
@@ -43,11 +44,7 @@ extension Camera {
       captureSession.addOutput(output)
     }
 
-    guard let input = backInput else {
-      configure()
-      startSession()
-      return
-    }
+    guard let input = backInput else { return }
     if captureSession.canAddInput(input) {
       captureSession.addInput(input)
     }

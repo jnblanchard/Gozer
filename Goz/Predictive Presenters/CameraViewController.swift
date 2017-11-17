@@ -13,8 +13,6 @@ import StoreKit
 
 class CameraViewController: UIViewController {
 
-  let camera = Camera.shared
-
   var insightController: InsightfulViewController? {
     return childViewControllers.first(where: { (vc) -> Bool in
       return vc is InsightfulViewController
@@ -73,14 +71,33 @@ class CameraViewController: UIViewController {
     UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
     UIView.setAnimationsEnabled(true)
     guard !CameraPlatform.isSimulator else { return }
-    camera.insight = insightController
-    camera.presenter = self
-    camera.startSession()
+    switch AVCaptureDevice.authorizationStatus(for: AVMediaType.video) {
+    case .authorized:
+      guard let ivc = self.insightController else { return }
+      Camera.shared.startSession(delly: self, sights: ivc)
+    case .denied:
+      //ask for settings auth
+      break
+    case .notDetermined:
+      AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
+        if response {
+          DispatchQueue.main.async {
+            guard let ivc = self.insightController else { return }
+            Camera.shared.startSession(delly: self, sights: ivc)
+          }
+        } else {
+          debugPrint("rejection")
+        }
+      }
+    case .restricted:
+      // Continue with restriction
+      break
+    }
   }
 
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    camera.stopSession()
+    Camera.shared.stopSession()
   }
 
   @objc func orientationChanged(notification: Notification) {
@@ -104,7 +121,7 @@ class CameraViewController: UIViewController {
   }
 
   @IBAction func torchSwitch(_ sender: Any) {
-    guard let device = camera.backDevice else { return }
+    guard let device = Camera.shared.backDevice else { return }
     do {
       try device.lockForConfiguration()
       let torchSwitch = device.torchMode == .on
@@ -135,21 +152,21 @@ class CameraViewController: UIViewController {
   }
 
   @IBAction func predictionPugTapped(_ sender: Any) {
-    let connection = camera.photoOutput.connection(with: AVMediaType.video)
+    let connection = Camera.shared.photoOutput.connection(with: AVMediaType.video)
     guard let vOr = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue) else { return }
     connection?.videoOrientation = vOr
-    camera.photoOutput.capturePhoto(with: AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]), delegate: self)
+    Camera.shared.photoOutput.capturePhoto(with: AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]), delegate: self)
     /* Prediction curation 11/10/17
-    guard predictionIndicator.tag != 14 else { return }
-    predictionIndicator.startAnimating()
-    predictions.removeAll()
-    predictionIndicator.tag = 14
-    */
+     guard predictionIndicator.tag != 14 else { return }
+     predictionIndicator.startAnimating()
+     predictions.removeAll()
+     predictionIndicator.tag = 14
+     */
   }
 
   @objc func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
     guard let devicePoint = previewLayer?.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view)) else { return }
-    camera.focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
+    Camera.shared.focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

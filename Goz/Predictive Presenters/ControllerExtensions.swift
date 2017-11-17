@@ -29,7 +29,7 @@ extension CameraViewController: CameraPresenter {
     previewLayer!.frame = view.bounds
     view.layer.addSublayer(previewLayer!)
     view.bringSubview(toFront: cameraParentView)
-    camera.begin()
+    Camera.shared.begin()
   }
 
   func lastOrientation() -> UIDeviceOrientation {
