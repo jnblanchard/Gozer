@@ -27,14 +27,13 @@ class InferenceViewController: UIViewController {
       DispatchQueue.main.async {
         for placement in placements {
           let label = UILabel()
-          label.font = UIFont(name: "Futura-Medium", size: 25)
+          label.font = UIFont.boldSystemFont(ofSize: 25)
           label.textAlignment = .center
           label.text = placement
           label.numberOfLines = 0
           label.textColor = UIColor.white
           self.stackView.addArrangedSubview(label)
         }
-        self.view.layoutIfNeeded()
       }
     }
   }

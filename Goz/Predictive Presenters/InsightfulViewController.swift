@@ -12,8 +12,6 @@ class InsightfulViewController: UIViewController {
 
   @IBOutlet var labStackView: UIStackView!
 
-  var delegate: Insights?
-
   var insightCount: Int {
     //return numInferences
     return 4
@@ -47,7 +45,6 @@ class InsightfulViewController: UIViewController {
         let prediction = inferences[i]
         temp.text = "\(prediction.1.rounded(toPlaces: 3)*100)%, \(prediction.0.replacingOccurrences(of: "_", with: " ").capitalized)"
       }
-      delegate?.topPredictionsFromFrame(entry: inferences)
     }
   }
 
@@ -59,13 +56,11 @@ class InsightfulViewController: UIViewController {
       label.adjustsFontSizeToFitWidth = true
       label.minimumScaleFactor = 0.8
       label.textAlignment = .center
-      label.font = UIFont(name: "Futura-Medium", size: 15)
-      label.autoresizingMask = .flexibleWidth
+      label.font = UIFont.boldSystemFont(ofSize: 15)
       label.numberOfLines = 0
       label.textColor = UIColor.white
       labStackView.addArrangedSubview(label)
     }
-    view.layoutIfNeeded()
   }
 
   override func didReceiveMemoryWarning() {
@@ -73,7 +68,7 @@ class InsightfulViewController: UIViewController {
   }
 }
 
-protocol Insights { func topPredictionsFromFrame(entry: [(String, Double)]) }
+//protocol Insights { func topPredictionsFromFrame(entry: [(String, Double)]) }
 
 extension InsightfulViewController: InsightPresenter {
   func show(breedProb: [String : Double]?) {

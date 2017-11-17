@@ -15,16 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let main = storyboard.instantiateInitialViewController()
-    window?.resignKey()
-    window = UIWindow(frame: UIScreen.main.bounds)
-    window?.rootViewController = main
-    window?.makeKeyAndVisible()
-    guard window?.rootViewController is CameraViewController else {
-      Camera.shared.begin()
-      return true
-    }
+//    let main = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Camera")
+//    window?.rootViewController = main
+//    window?.makeKeyAndVisible()
+//    guard window?.rootViewController is CameraViewController else {
+//      Camera.shared.begin()
+//      return true
+//    }
     return true
   }
 

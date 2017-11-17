@@ -28,9 +28,8 @@ class CameraViewController: UIViewController {
   var previewLayer: AVCaptureVideoPreviewLayer?
 
   override var prefersStatusBarHidden: Bool { return true }
-  override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
+//  override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
 
-  var predictions: [[(String, Double)]] = [[]]
   var predictionImage: UIImage?
   var predictionPlacement: [(String, Double)?] = []
   var picking: Bool = false
@@ -41,7 +40,6 @@ class CameraViewController: UIViewController {
     super.viewDidLoad()
     predictionIndicator.layer.borderColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.4).cgColor
     predictionIndicator.layer.borderWidth = 1.0
-    insightController?.delegate = self
     picker.delegate = self
     picker.allowsEditing = false
     picker.delegate = self

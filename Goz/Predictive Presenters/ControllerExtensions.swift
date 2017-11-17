@@ -16,6 +16,10 @@ struct CameraPlatform {
   }
 }
 
+protocol InsightPresenter {
+  func show(breedProb: [String : Double]?)
+}
+
 let oreo = UIDevice.current.orientation
 
 var numInferences: Int {
