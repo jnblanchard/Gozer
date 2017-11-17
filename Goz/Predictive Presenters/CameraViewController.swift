@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 import Accelerate
+import StoreKit
 
 class CameraViewController: UIViewController {
 
@@ -46,6 +47,14 @@ class CameraViewController: UIViewController {
                                            selector: #selector(orientationChanged),
                                            name: NSNotification.Name.UIDeviceOrientationDidChange,
                                            object: nil)
+    guard UserDefaults.standard.object(forKey: "AppLaunch") != nil else {
+      UserDefaults.standard.set(1, forKey: "AppLaunch")
+      return
+    }
+    let temp = UserDefaults.standard.integer(forKey: "AppLaunch")+1
+    UserDefaults.standard.set(temp, forKey: "AppLaunch")
+    guard temp % 3 == 0 else { return }
+    SKStoreReviewController.requestReview()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -58,14 +67,14 @@ class CameraViewController: UIViewController {
     UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
     UIView.setAnimationsEnabled(true)
     guard !CameraPlatform.isSimulator else { return }
-    camera?.insight = insightController
-    camera?.presenter = self
-    camera?.startSession()
+    camera.insight = insightController
+    camera.presenter = self
+    camera.startSession()
   }
 
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
-    camera?.stopSession()
+    camera.stopSession()
   }
 
   @objc func orientationChanged(notification: Notification) {
@@ -89,7 +98,7 @@ class CameraViewController: UIViewController {
   }
 
   @IBAction func torchSwitch(_ sender: Any) {
-    guard let device = camera?.backDevice else { return }
+    guard let device = camera.backDevice else { return }
     do {
       try device.lockForConfiguration()
       let torchSwitch = device.torchMode == .on
@@ -124,10 +133,10 @@ class CameraViewController: UIViewController {
   }
 
   @IBAction func predictionPugTapped(_ sender: Any) {
-    let connection = camera?.photoOutput.connection(with: AVMediaType.video)
+    let connection = camera.photoOutput.connection(with: AVMediaType.video)
     guard let vOr = AVCaptureVideoOrientation(rawValue: UIDevice.current.orientation.rawValue) else { return }
     connection?.videoOrientation = vOr
-    camera?.photoOutput.capturePhoto(with: AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]), delegate: self)
+    camera.photoOutput.capturePhoto(with: AVCapturePhotoSettings(format: [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]), delegate: self)
     /* Prediction curation 11/10/17
     guard predictionIndicator.tag != 14 else { return }
     predictionIndicator.startAnimating()
@@ -138,7 +147,7 @@ class CameraViewController: UIViewController {
 
   @objc func focusAndExposeTap(_ gestureRecognizer: UITapGestureRecognizer) {
     guard let devicePoint = previewLayer?.captureDevicePointConverted(fromLayerPoint: gestureRecognizer.location(in: gestureRecognizer.view)) else { return }
-    camera?.focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
+    camera.focus(with: .autoFocus, exposureMode: .autoExpose, at: devicePoint, monitorSubjectAreaChange: true)
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

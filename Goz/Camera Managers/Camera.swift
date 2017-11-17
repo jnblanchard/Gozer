@@ -11,10 +11,7 @@ import AVFoundation
 
 class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
 
-  static var shared: Camera? {
-    guard AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == .authorized else { return nil }
-    return Camera()
-  }
+  static var shared = Camera()
 
   let deviceQueue = DispatchQueue(label: "Device", autoreleaseFrequency: .workItem)
   let videoBufferQueue = DispatchQueue(label: "Output", autoreleaseFrequency: .workItem)
@@ -93,6 +90,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
   }
 
   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    guard Bundle(for: GozAlmostuge.self).url(forResource: "GozAlmostuge", withExtension:"mlmodelc") != nil else { return }
     poorPredict(using: sampleBuffer, connection: connection)
   }
 }

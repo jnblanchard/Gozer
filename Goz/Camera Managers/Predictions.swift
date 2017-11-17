@@ -47,6 +47,7 @@ extension Camera {
 
     guard let dogFrame = scaledImage.toBuffer() else { return }
 
+    guard Bundle(for: GozAlmostuge.self).url(forResource: "GozAlmostuge", withExtension:"mlmodelc") != nil else { return }
     guard let prediction = try? GozAlmostuge().prediction(image: dogFrame) else { return }
     DispatchQueue.main.async {
       self.insight?.show(breedProb: prediction.breedProbability)
