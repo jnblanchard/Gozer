@@ -37,11 +37,17 @@ class CameraViewController: UIViewController {
   var predictionPlacement: [(String, Double)?] = []
   var picking: Bool = false
 
+  let picker = UIImagePickerController()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     predictionIndicator.layer.borderColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.4).cgColor
     predictionIndicator.layer.borderWidth = 1.0
     insightController?.delegate = self
+    picker.delegate = self
+    picker.allowsEditing = false
+    picker.delegate = self
+    picker.sourceType = .photoLibrary
     cameraParentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(focusAndExposeTap)))
     NotificationCenter.default.addObserver(self,
                                            selector: #selector(orientationChanged),
@@ -53,7 +59,7 @@ class CameraViewController: UIViewController {
     }
     let temp = UserDefaults.standard.integer(forKey: "AppLaunch")+1
     UserDefaults.standard.set(temp, forKey: "AppLaunch")
-    guard temp % 3 == 0 else { return }
+    guard temp % 5 == 0 else { return }
     SKStoreReviewController.requestReview()
   }
 
@@ -125,10 +131,6 @@ class CameraViewController: UIViewController {
   }
 
   @IBAction func upload(_ sender: Any) {
-    let picker = UIImagePickerController()
-    picker.allowsEditing = false
-    picker.delegate = self
-    picker.sourceType = .photoLibrary
     present(picker, animated: true, completion: nil)
   }
 

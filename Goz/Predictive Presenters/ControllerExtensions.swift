@@ -72,8 +72,8 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
     picking = true
     let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
     DispatchQueue.main.async { self.predictionImage = chosenImage }
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: 350, height: 350), false, 0.0)
-    chosenImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 350, height: 350)))
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: inputWidth, height: inputHeight), false, 0.0)
+    chosenImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: inputWidth, height: inputHeight)))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()

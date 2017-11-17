@@ -176,8 +176,8 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
       frameImage = frameImage.imageRotatedBy(degrees: 90, flipX: false, flipY: false) ?? frameImage
     }
 
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: 350, height: 350), false, 0.0)
-    frameImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 350, height: 350)))
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: inputWidth, height: inputHeight), false, 0.0)
+    frameImage.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: inputWidth, height: inputHeight)))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()

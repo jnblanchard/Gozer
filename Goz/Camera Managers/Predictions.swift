@@ -11,6 +11,9 @@ import UIKit
 import AVFoundation
 import Accelerate
 
+let inputWidth = 350
+let inputHeight = 350
+
 extension Camera {
   func poorPredict(using sample: CMSampleBuffer, connection: AVCaptureConnection) {
     //image size 350x350
@@ -38,9 +41,9 @@ extension Camera {
       frameImage = frameImage.imageRotatedBy(degrees: 90, flipX: false, flipY: true) ?? frameImage
     }
 
-    UIGraphicsBeginImageContextWithOptions(CGSize(width: 350, height: 350), false, 0.0)
-    //frameImage.draw(in: CGRect(x: 0, y: 0, width: 350, height: 400))
-    frameImage.draw(in: aspectFitFrame(destSize: CGSize(width: 350, height: 350), srcSize: frameImage.size))
+    UIGraphicsBeginImageContextWithOptions(CGSize(width: inputWidth, height: inputHeight), false, 0.0)
+    //frameImage.draw(in: CGRect(x: 0, y: 0, width: inputWidth, height: inputHeight))
+    frameImage.draw(in: aspectFitFrame(destSize: CGSize(width: inputWidth, height: inputHeight), srcSize: frameImage.size))
 
     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
