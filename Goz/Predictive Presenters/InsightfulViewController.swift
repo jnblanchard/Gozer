@@ -43,7 +43,7 @@ class InsightfulViewController: UIViewController {
         guard let temp = label as? UILabel, let i = labStackView.arrangedSubviews.index(of: temp) else { continue }
         guard i < inferences.count else { continue }
         let prediction = inferences[i]
-        temp.text = "\(prediction.1.rounded(toPlaces: 3)*100)%, \(prediction.0.replacingOccurrences(of: "_", with: " ").capitalized)"
+        temp.text = "\(prediction.1.rounded(toPlaces: 3)*100)% \(prediction.0.replacingOccurrences(of: "_", with: " ").capitalized)"
       }
     }
   }
