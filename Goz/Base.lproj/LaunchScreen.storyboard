@@ -29,13 +29,21 @@
                                     <constraint firstAttribute="height" constant="85" id="myK-jf-l6N"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCM-a4-pze">
+                                <rect key="frame" x="177" y="566" width="21.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PP8-vF-aQI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2HO-20-ivr"/>
                             <constraint firstItem="PP8-vF-aQI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L01-dO-n7z"/>
                             <constraint firstItem="g9J-bh-E1b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="SmA-GR-jJO"/>
+                            <constraint firstItem="FCM-a4-pze" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="UAz-E0-1Kj"/>
                             <constraint firstItem="g9J-bh-E1b" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="VLY-jg-vIx"/>
+                            <constraint firstItem="PP8-vF-aQI" firstAttribute="top" secondItem="FCM-a4-pze" secondAttribute="bottom" id="c8n-Y7-mIl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PP8-vF-aQI" secondAttribute="trailing" id="iSr-TS-xhE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
