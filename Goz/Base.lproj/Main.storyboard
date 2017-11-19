@@ -46,11 +46,11 @@
                                                     <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ism-jY-MIq">
                                                         <rect key="frame" x="0.0" y="0.0" width="125" height="55"/>
                                                         <subviews>
-                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="headTruncation" numberOfLines="2" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54a-H6-9Z6" customClass="TorchLabel" customModule="Goz" customModuleProvider="target">
-                                                                <rect key="frame" x="40.333333333333336" y="9" width="44.000000000000007" height="38.333333333333336"/>
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="headTruncation" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54a-H6-9Z6" customClass="TorchLabel" customModule="Goz" customModuleProvider="target">
+                                                                <rect key="frame" x="43" y="11.333333333333371" width="39" height="33.666666666666664"/>
                                                                 <string key="text">Torch
 On</string>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -95,11 +95,11 @@ On</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THu-M4-5ri">
                                                         <rect key="frame" x="250" y="0.0" width="125" height="55"/>
                                                         <subviews>
-                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="headTruncation" numberOfLines="0" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kB3-RX-Ozd">
-                                                                <rect key="frame" x="13.333333333333314" y="8.3333333333333712" width="98.333333333333329" height="38.333333333333336"/>
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="headTruncation" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kB3-RX-Ozd">
+                                                                <rect key="frame" x="19" y="10.666666666666629" width="87.333333333333329" height="33.666666666666664"/>
                                                                 <string key="text">Import
 From Photos</string>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>

@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import AVFoundation
-import Accelerate
 
 let inputWidth = 350
 let inputHeight = 350
@@ -57,6 +56,7 @@ extension Camera {
     }
   }
 
+  /*
   func predict(using sample: CMSampleBuffer) {
     // image size 224x224
 
@@ -107,6 +107,7 @@ extension Camera {
 //      self.predictionLabel.text = prediction.classLabel
     }
   }
+ */
 
   func aspectFitFrame(destSize:CGSize, srcSize:CGSize) -> CGRect{
     let hfactor : CGFloat = srcSize.width/destSize.width

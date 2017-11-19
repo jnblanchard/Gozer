@@ -8,7 +8,6 @@
 
 import UIKit
 import AVFoundation
-import Accelerate
 import StoreKit
 
 class CameraViewController: UIViewController {
