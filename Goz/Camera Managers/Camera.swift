@@ -215,7 +215,7 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
   }
 
   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    guard Bundle(for: GozRes.self).url(forResource: "GozRes", withExtension:"mlmodelc") != nil else { return }
+    guard Bundle(for: GozBlah.self).url(forResource: "GozBlah", withExtension:"mlmodelc") != nil else { return }
     poorPredict(using: sampleBuffer, connection: connection)
   }
 }
