@@ -49,10 +49,10 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
 
     guard let scaledBuffer = scaledImage.toBuffer() else { return }
     do {
-      let prediction = try Gozz().prediction(image: scaledBuffer)
+      let prediction = try GozRes().prediction(image: scaledBuffer)
       predictionPlacement = orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)
       predictionImage = frameImage
-      DispatchQueue.main.async { self.performSegue(withIdentifier: "inference", sender: self) }
+      performSegue(withIdentifier: "inference", sender: self)
     } catch {
       debugPrint(error)
     }

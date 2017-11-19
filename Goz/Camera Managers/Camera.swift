@@ -211,11 +211,11 @@ class Camera: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
   }
 
   func captureOutput(_ captureOutput: AVCaptureOutput, didDrop sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    //debugPrint("dropped video output")
+    debugPrint("dropped video output")
   }
 
   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-    guard Bundle(for: Gozz.self).url(forResource: "Gozz", withExtension:"mlmodelc") != nil else { return }
+    guard Bundle(for: GozRes.self).url(forResource: "GozRes", withExtension:"mlmodelc") != nil else { return }
     poorPredict(using: sampleBuffer, connection: connection)
   }
 }

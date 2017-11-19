@@ -16,7 +16,6 @@
 		AC3C89D51FB14D52008D47FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3C89D31FB14D52008D47FD /* LaunchScreen.storyboard */; };
 		AC3C89E01FB14D53008D47FD /* GozTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89DF1FB14D53008D47FD /* GozTests.swift */; };
 		AC3C89EB1FB14D53008D47FD /* GozUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89EA1FB14D53008D47FD /* GozUITests.swift */; };
-		AC74A79B1FBFE03800D1D8B2 /* Gozz.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AC74A79A1FBFE03800D1D8B2 /* Gozz.mlmodel */; };
 		AC8C1C6B1FB25020005C6C5C /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C1C6A1FB25020005C6C5C /* UIImageExtensions.swift */; };
 		AC8C1C6D1FB25A12005C6C5C /* CameraExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C1C6C1FB25A12005C6C5C /* CameraExtensions.swift */; };
 		AC8C1C6F1FB25B27005C6C5C /* Predictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C1C6E1FB25B27005C6C5C /* Predictions.swift */; };
@@ -24,6 +23,7 @@
 		AC9E37EB1FB4D82900B60AF0 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */; };
 		ACC421E91FB51F34002B94F0 /* InferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */; };
 		ACCC0A391FBC0637003DAAB9 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC0A381FBC0637003DAAB9 /* Camera.swift */; };
+		ACF8094B1FC1199E00B0A842 /* GozRes.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ACF8094A1FC1199E00B0A842 /* GozRes.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,6 @@
 		AC3C89E61FB14D53008D47FD /* GozUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GozUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3C89EA1FB14D53008D47FD /* GozUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GozUITests.swift; sourceTree = "<group>"; };
 		AC3C89EC1FB14D53008D47FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC74A79A1FBFE03800D1D8B2 /* Gozz.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Gozz.mlmodel; sourceTree = "<group>"; };
 		AC8C1C6A1FB25020005C6C5C /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		AC8C1C6C1FB25A12005C6C5C /* CameraExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraExtensions.swift; sourceTree = "<group>"; };
 		AC8C1C6E1FB25B27005C6C5C /* Predictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predictions.swift; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 		ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceViewController.swift; sourceTree = "<group>"; };
 		ACCC0A381FBC0637003DAAB9 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		ACF8094A1FC1199E00B0A842 /* GozRes.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GozRes.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */,
-				AC74A79A1FBFE03800D1D8B2 /* Gozz.mlmodel */,
+				ACF8094A1FC1199E00B0A842 /* GozRes.mlmodel */,
 				AC3249F61FBC9F2700796899 /* Predictive Presenters */,
 				AC3249F51FBC9F1900796899 /* Camera Managers */,
 				AC3C89CE1FB14D52008D47FD /* Main.storyboard */,
@@ -308,8 +308,8 @@
 				AC9E37EB1FB4D82900B60AF0 /* ControllerExtensions.swift in Sources */,
 				AC3C89CD1FB14D52008D47FD /* CameraViewController.swift in Sources */,
 				AC9E37E91FB4D21A00B60AF0 /* ViewExtensions.swift in Sources */,
-				AC74A79B1FBFE03800D1D8B2 /* Gozz.mlmodel in Sources */,
 				AC8C1C6D1FB25A12005C6C5C /* CameraExtensions.swift in Sources */,
+				ACF8094B1FC1199E00B0A842 /* GozRes.mlmodel in Sources */,
 				AC2F4F3A1FB785E1004862CA /* TorchLabel.swift in Sources */,
 				AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */,
 				ACC421E91FB51F34002B94F0 /* InferenceViewController.swift in Sources */,

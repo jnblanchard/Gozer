@@ -15,31 +15,25 @@ class InferenceViewController: UIViewController {
   @IBOutlet var stackView: UIStackView!
   @IBOutlet var imageView: UIImageView!
   var frame: UIImage?
-  var placementData: [(String, Double)?] = [] {
-    didSet {
-      var i = 0
-      let placements = placementData.filter({ (entry) -> Bool in
-        return entry != nil
-      }).map { (confirmation) -> String in
-        i+=1
-        return "\(confirmation!.1.rounded(toPlaces: 3)*100)% \(confirmation!.0.replacingOccurrences(of: "_", with: " ").capitalized)"
-      }
-      DispatchQueue.main.async {
-        for placement in placements {
-          let label = UILabel()
-          label.font = UIFont.boldSystemFont(ofSize: 25)
-          label.textAlignment = .center
-          label.text = placement
-          label.numberOfLines = 0
-          label.textColor = UIColor.white
-          self.stackView.addArrangedSubview(label)
-        }
-      }
-    }
-  }
-
+  var placementData: [(String, Double)?] = []
   override func viewDidLoad() {
     super.viewDidLoad()
+    var i = 0
+    let placements = placementData.filter({ (entry) -> Bool in
+      return entry != nil
+    }).map { (confirmation) -> String in
+      i+=1
+      return "\(confirmation!.1.rounded(toPlaces: 3)*100)% \(confirmation!.0.replacingOccurrences(of: "_", with: " ").capitalized)"
+    }
+    for placement in placements {
+      let label = UILabel()
+      label.font = UIFont.boldSystemFont(ofSize: 25)
+      label.textAlignment = .center
+      label.text = placement
+      label.numberOfLines = 0
+      label.textColor = UIColor.white
+      stackView.addArrangedSubview(label)
+    }
     imageView.image = frame
   }
 

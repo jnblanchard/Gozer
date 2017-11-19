@@ -28,7 +28,7 @@ class CameraViewController: UIViewController {
   var previewLayer: AVCaptureVideoPreviewLayer?
 
   override var prefersStatusBarHidden: Bool { return true }
-//  override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask { return .portrait }
 
   var predictionImage: UIImage?
   var predictionPlacement: [(String, Double)?] = []
@@ -114,7 +114,6 @@ class CameraViewController: UIViewController {
         view.rotateViewForOrientations(orientation: orientation)
       }
     }
-
     insightController?.orientation = orientation
   }
 
