@@ -159,9 +159,7 @@ class CameraManager: NSObject {
       device.activeVideoMinFrameDuration = bestFrameRateRange?.minFrameDuration ?? kCMTimeZero
       device.activeVideoMaxFrameDuration = bestFrameRateRange?.maxFrameDuration ?? kCMTimeZero
 
-      if device.isTorchAvailable {
-        device.torchMode = .off
-      }
+      if device.isTorchAvailable { device.torchMode = .off }
 
       if device.isFocusModeSupported(.continuousAutoFocus) {
         device.focusMode = .continuousAutoFocus
