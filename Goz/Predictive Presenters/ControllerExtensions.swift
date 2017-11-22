@@ -33,7 +33,7 @@ extension CameraViewController: CameraPresenter {
     previewLayer!.frame = view.bounds
     view.layer.addSublayer(previewLayer!)
     view.bringSubview(toFront: cameraParentView)
-    Camera.shared.begin()
+    CameraManager.shared.begin()
   }
 
   func lastOrientation() -> UIDeviceOrientation {
@@ -84,7 +84,7 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
 
     guard let dogImg = scaledImage.toBuffer() else { return }
 
-    guard let prediction = try? GozBlah().prediction(image: dogImg) else { return }
+    guard let prediction = try? GozMax().prediction(image: dogImg) else { return }
     DispatchQueue.main.async {
       self.dismiss(animated: true) {
         self.predictionPlacement = self.orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)

@@ -13,7 +13,7 @@ import AVFoundation
 let inputWidth = 350
 let inputHeight = 350
 
-extension Camera {
+extension CameraManager {
   func poorPredict(using sample: CMSampleBuffer, connection: AVCaptureConnection) {
     //image size 350x350
     guard let delegate = presenter else { return }
@@ -49,8 +49,8 @@ extension Camera {
 
     guard let dogFrame = scaledImage.toBuffer() else { return }
 
-    guard Bundle(for: GozBlah.self).url(forResource: "GozBlah", withExtension:"mlmodelc") != nil else { return }
-    guard let prediction = try? GozBlah().prediction(image: dogFrame) else { return }
+    guard Bundle(for: GozMax.self).url(forResource: "GozMax", withExtension:"mlmodelc") != nil else { return }
+    guard let prediction = try? GozMax().prediction(image: dogFrame) else { return }
     DispatchQueue.main.async {
       self.insight?.show(breedProb: prediction.breedProbability)
     }

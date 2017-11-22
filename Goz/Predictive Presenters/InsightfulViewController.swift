@@ -39,11 +39,13 @@ class InsightfulViewController: UIViewController {
     didSet {
       guard let wholeDict = predictions else { return }
       let inferences = orderedFirstNInferences(n: insightCount, dict: wholeDict)
-      for label in labStackView.arrangedSubviews {
-        guard let temp = label as? UILabel, let i = labStackView.arrangedSubviews.index(of: temp) else { continue }
-        guard i < inferences.count else { continue }
-        let prediction = inferences[i]
-        temp.text = "\(prediction.1.rounded(toPlaces: 3)*100)% \(prediction.0.replacingOccurrences(of: "_", with: " ").capitalized)"
+      DispatchQueue.main.async {
+        for label in self.labStackView.arrangedSubviews {
+          guard let temp = label as? UILabel, let i = self.labStackView.arrangedSubviews.index(of: temp) else { continue }
+          guard i < inferences.count else { continue }
+          let prediction = inferences[i]
+          temp.text = "\(prediction.1.rounded(toPlaces: 3)*100)% \(prediction.0.replacingOccurrences(of: "_", with: " ").capitalized)"
+        }
       }
     }
   }

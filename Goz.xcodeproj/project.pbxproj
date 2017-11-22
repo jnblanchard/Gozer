@@ -22,9 +22,8 @@
 		AC9E37E91FB4D21A00B60AF0 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E37E81FB4D21A00B60AF0 /* ViewExtensions.swift */; };
 		AC9E37EB1FB4D82900B60AF0 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */; };
 		ACC421E91FB51F34002B94F0 /* InferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */; };
-		ACCC0A391FBC0637003DAAB9 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC0A381FBC0637003DAAB9 /* Camera.swift */; };
-		ACF8094B1FC1199E00B0A842 /* GozRes.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ACF8094A1FC1199E00B0A842 /* GozRes.mlmodel */; };
-		ACF8094F1FC1D50B00B0A842 /* GozBlah.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ACF8094E1FC1D50B00B0A842 /* GozBlah.mlmodel */; };
+		ACC60D151FC3C5FA00C6385D /* GozMax.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ACC60D141FC3C5FA00C6385D /* GozMax.mlmodel */; };
+		ACCC0A391FBC0637003DAAB9 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC0A381FBC0637003DAAB9 /* CameraManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,9 +65,8 @@
 		AC9E37E81FB4D21A00B60AF0 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 		ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceViewController.swift; sourceTree = "<group>"; };
-		ACCC0A381FBC0637003DAAB9 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
-		ACF8094A1FC1199E00B0A842 /* GozRes.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GozRes.mlmodel; sourceTree = "<group>"; };
-		ACF8094E1FC1D50B00B0A842 /* GozBlah.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GozBlah.mlmodel; sourceTree = "<group>"; };
+		ACC60D141FC3C5FA00C6385D /* GozMax.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GozMax.mlmodel; sourceTree = "<group>"; };
+		ACCC0A381FBC0637003DAAB9 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +97,7 @@
 		AC3249F51FBC9F1900796899 /* Camera Managers */ = {
 			isa = PBXGroup;
 			children = (
-				ACCC0A381FBC0637003DAAB9 /* Camera.swift */,
+				ACCC0A381FBC0637003DAAB9 /* CameraManager.swift */,
 				AC8C1C6C1FB25A12005C6C5C /* CameraExtensions.swift */,
 				AC8C1C6E1FB25B27005C6C5C /* Predictions.swift */,
 			);
@@ -144,8 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */,
-				ACF8094A1FC1199E00B0A842 /* GozRes.mlmodel */,
-				ACF8094E1FC1D50B00B0A842 /* GozBlah.mlmodel */,
+				ACC60D141FC3C5FA00C6385D /* GozMax.mlmodel */,
 				AC3249F61FBC9F2700796899 /* Predictive Presenters */,
 				AC3249F51FBC9F1900796899 /* Camera Managers */,
 				AC3C89CE1FB14D52008D47FD /* Main.storyboard */,
@@ -312,12 +309,11 @@
 				AC3C89CD1FB14D52008D47FD /* CameraViewController.swift in Sources */,
 				AC9E37E91FB4D21A00B60AF0 /* ViewExtensions.swift in Sources */,
 				AC8C1C6D1FB25A12005C6C5C /* CameraExtensions.swift in Sources */,
-				ACF8094F1FC1D50B00B0A842 /* GozBlah.mlmodel in Sources */,
-				ACF8094B1FC1199E00B0A842 /* GozRes.mlmodel in Sources */,
+				ACC60D151FC3C5FA00C6385D /* GozMax.mlmodel in Sources */,
 				AC2F4F3A1FB785E1004862CA /* TorchLabel.swift in Sources */,
 				AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */,
 				ACC421E91FB51F34002B94F0 /* InferenceViewController.swift in Sources */,
-				ACCC0A391FBC0637003DAAB9 /* Camera.swift in Sources */,
+				ACCC0A391FBC0637003DAAB9 /* CameraManager.swift in Sources */,
 				AC042CF11FB29FE400B7A752 /* InsightfulViewController.swift in Sources */,
 				AC8C1C6F1FB25B27005C6C5C /* Predictions.swift in Sources */,
 				AC8C1C6B1FB25020005C6C5C /* UIImageExtensions.swift in Sources */,
