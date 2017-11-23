@@ -49,7 +49,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
 
     guard let scaledBuffer = scaledImage.toBuffer() else { return }
     do {
-      let prediction = try GozMax().prediction(image: scaledBuffer)
+      let prediction = try GozAlmostuge().prediction(image: scaledBuffer)
       predictionPlacement = orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)
       predictionImage = frameImage
       performSegue(withIdentifier: "inference", sender: self)

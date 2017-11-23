@@ -219,7 +219,7 @@ extension CameraManager: AVCaptureVideoDataOutputSampleBufferDelegate {
 
   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
     guard connection.isActive && connection.isEnabled else { return }
-    guard Bundle(for: GozMax.self).url(forResource: "GozMax", withExtension:"mlmodelc") != nil else { return }
+    guard Bundle(for: GozAlmostuge.self).url(forResource: "GozAlmostuge", withExtension:"mlmodelc") != nil else { return }
     poorPredict(using: sampleBuffer, connection: connection)
   }
 }

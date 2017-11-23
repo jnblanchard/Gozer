@@ -84,7 +84,7 @@ extension CameraViewController: UINavigationControllerDelegate, UIImagePickerCon
 
     guard let dogImg = scaledImage.toBuffer() else { return }
 
-    guard let prediction = try? GozMax().prediction(image: dogImg) else { return }
+    guard let prediction = try? GozAlmostuge().prediction(image: dogImg) else { return }
     DispatchQueue.main.async {
       self.dismiss(animated: true) {
         self.predictionPlacement = self.orderedFirstNInferences(n: numInferences, dict: prediction.breedProbability)

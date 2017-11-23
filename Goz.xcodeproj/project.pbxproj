@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC042CF11FB29FE400B7A752 /* InsightfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */; };
 		AC2F4F3A1FB785E1004862CA /* TorchLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2F4F391FB785E1004862CA /* TorchLabel.swift */; };
+		AC33D0A41FC64C4200F71CF4 /* GozAlmostuge.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = AC33D0A31FC64C4200F71CF4 /* GozAlmostuge.mlmodel */; };
 		AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */; };
 		AC3C89CD1FB14D52008D47FD /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3C89CC1FB14D52008D47FD /* CameraViewController.swift */; };
 		AC3C89D01FB14D52008D47FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC3C89CE1FB14D52008D47FD /* Main.storyboard */; };
@@ -22,7 +23,6 @@
 		AC9E37E91FB4D21A00B60AF0 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E37E81FB4D21A00B60AF0 /* ViewExtensions.swift */; };
 		AC9E37EB1FB4D82900B60AF0 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */; };
 		ACC421E91FB51F34002B94F0 /* InferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */; };
-		ACC60D151FC3C5FA00C6385D /* GozMax.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ACC60D141FC3C5FA00C6385D /* GozMax.mlmodel */; };
 		ACCC0A391FBC0637003DAAB9 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCC0A381FBC0637003DAAB9 /* CameraManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +46,7 @@
 /* Begin PBXFileReference section */
 		AC042CF01FB29FE400B7A752 /* InsightfulViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightfulViewController.swift; sourceTree = "<group>"; };
 		AC2F4F391FB785E1004862CA /* TorchLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorchLabel.swift; sourceTree = "<group>"; };
+		AC33D0A31FC64C4200F71CF4 /* GozAlmostuge.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GozAlmostuge.mlmodel; sourceTree = "<group>"; };
 		AC3C89C71FB14D52008D47FD /* Goz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC3C89CC1FB14D52008D47FD /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		AC9E37E81FB4D21A00B60AF0 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		AC9E37EA1FB4D82900B60AF0 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 		ACC421E81FB51F34002B94F0 /* InferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceViewController.swift; sourceTree = "<group>"; };
-		ACC60D141FC3C5FA00C6385D /* GozMax.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GozMax.mlmodel; sourceTree = "<group>"; };
 		ACCC0A381FBC0637003DAAB9 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				AC3C89CA1FB14D52008D47FD /* AppDelegate.swift */,
-				ACC60D141FC3C5FA00C6385D /* GozMax.mlmodel */,
+				AC33D0A31FC64C4200F71CF4 /* GozAlmostuge.mlmodel */,
 				AC3249F61FBC9F2700796899 /* Predictive Presenters */,
 				AC3249F51FBC9F1900796899 /* Camera Managers */,
 				AC3C89CE1FB14D52008D47FD /* Main.storyboard */,
@@ -306,10 +306,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC9E37EB1FB4D82900B60AF0 /* ControllerExtensions.swift in Sources */,
+				AC33D0A41FC64C4200F71CF4 /* GozAlmostuge.mlmodel in Sources */,
 				AC3C89CD1FB14D52008D47FD /* CameraViewController.swift in Sources */,
 				AC9E37E91FB4D21A00B60AF0 /* ViewExtensions.swift in Sources */,
 				AC8C1C6D1FB25A12005C6C5C /* CameraExtensions.swift in Sources */,
-				ACC60D151FC3C5FA00C6385D /* GozMax.mlmodel in Sources */,
 				AC2F4F3A1FB785E1004862CA /* TorchLabel.swift in Sources */,
 				AC3C89CB1FB14D52008D47FD /* AppDelegate.swift in Sources */,
 				ACC421E91FB51F34002B94F0 /* InferenceViewController.swift in Sources */,
